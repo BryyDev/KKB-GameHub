@@ -94,7 +94,54 @@ main.page {
     gap: 28px;
     flex: 1;
 
-    &__link {
+    & .category-dropdown {
+      position: relative;
+
+      & .category-menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        z-index: 3;
+        width: 220px;
+        padding: 10px;
+        border: 1px solid var(--accent);
+        border-radius: 8px;
+        background: var(--card);
+        box-shadow: 0 8px 24px rgb(0 0 0 / 35%);
+        text-align: left;
+
+        & strong {
+          display: block;
+          padding: 6px 8px 10px;
+          color: var(--accent-soft);
+          font-size: 12px;
+        }
+
+        & .category-menu__links {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+
+          & a {
+            display: block;
+            width: 100%;
+            padding: 9px 10px;
+            border-radius: 5px;
+            color: var(--text);
+            font-family: Poppins, sans-serif;
+            font-size: 13px;
+
+            &:hover,
+            &:focus-visible {
+              background: var(--accent);
+              color: #05212a;
+            }
+          }
+        }
+      }
+    }
+
+    & .nav__link {
       display: flex;
       align-items: center;
       gap: 5px;
@@ -103,6 +150,13 @@ main.page {
       font-size: 20px;
       white-space: nowrap;
       opacity: 0.85;
+      padding: 0;
+      border: 0;
+      background: var(--bg);
+      color: inherit;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
 
       &:hover,
       &.is-active {
@@ -233,13 +287,21 @@ main.page {
   & .covers {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0;
+    justify-content: flex-start;
+    gap: 10px;
     width: min(1310px, 100%);
     padding: 24px 16px 40px;
     overflow-x: auto;
+    scrollbar-width: none;
 
-    /* Cada jogo é um botão para também funcionar com teclado. */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &.is-category-view {
+      justify-content: center;
+    }
+
     & .card {
       flex: 0 0 270px;
       height: 414px;
@@ -255,20 +317,13 @@ main.page {
       box-shadow: 0 0 28px 1px var(--glow);
       color: inherit;
       cursor: pointer;
-      transition: transform 0.2s ease, flex-basis 0.2s ease, height 0.2s ease;
+      outline: 0;
+      transition: transform 0.2s ease;
 
-      &:hover {
-        transform: translateY(-6px);
-      }
-
-      &.is-featured {
-        flex-basis: 304px;
-        height: 466px;
+      &:hover,
+      &:focus-visible {
+        transform: translateY(-6px) scale(1.04);
         z-index: 1;
-
-        & .card__badge {
-          visibility: visible;
-        }
       }
 
       & .card__art {
@@ -300,6 +355,15 @@ main.page {
         text-align: center;
       }
 
+      & .card__actions {
+        width: 100%;
+        min-height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
       & .card__badge {
         width: 110px;
         height: 24px;
@@ -312,6 +376,23 @@ main.page {
         font-weight: 600;
         letter-spacing: 0.04em;
         visibility: hidden;
+      }
+
+      & .card__favorite {
+        min-height: 28px;
+        padding: 5px 8px;
+        border: 1px solid var(--accent);
+        border-radius: 8px;
+        background: transparent;
+        color: var(--accent-soft);
+        cursor: pointer;
+        font: inherit;
+        font-size: 10px;
+
+        &:hover,
+        &:focus-visible {
+          background: rgb(37 231 173 / 15%);
+        }
       }
 
       &[data-id="cs"] {
