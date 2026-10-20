@@ -131,7 +131,7 @@ function setActiveNav(name) {
   $$(".nav__link").forEach((link) => {
     link.classList.toggle("is-active", link.dataset.page === name);
     if (link.dataset.page === "categorias") {
-      link.setAttribute("aria-expanded", String(name === "categorias"));
+      link.setAttribute("aria-expanded", String(name === "categorias" && categoryMenuOpen));
     }
   });
 }

@@ -189,7 +189,7 @@ main.page {
       background: transparent;
       color: var(--text);
       font-family: Poppins, sans-serif;
-      font-size: 10px;
+      font-size: 16px;
 
       &::placeholder {
         color: var(--muted);
@@ -292,6 +292,8 @@ main.page {
     width: min(1310px, 100%);
     padding: 24px 16px 40px;
     overflow-x: auto;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
@@ -582,20 +584,96 @@ main.page {
   /* Ajustes responsivos também continuam dentro do escopo da main. */
   @media (max-width: 1100px) {
     & > .header {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    grid-template-areas:
+      "brand search theme login"
+      "nav nav nav nav";
+    align-items: center;
     height: auto;
-    padding: 12px 20px;
+    min-height: 132px;
+    gap: 12px 16px;
+    padding: 12px 20px 10px;
+    overflow: visible;
+    z-index: 10;
+
+    & .brand {
+      grid-area: brand;
+      width: 72px;
+      height: 72px;
+    }
+
+    & .search {
+      grid-area: search;
+      width: 100%;
+      min-width: 0;
+    }
+
+    & .theme {
+      grid-area: theme;
+      width: 44px;
+      height: 44px;
+    }
+
+    & .login {
+      grid-area: login;
+      min-width: 76px;
+      height: 44px;
+    }
 
     & .nav {
-      order: 5;
+      grid-area: nav;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      align-items: center;
       width: 100%;
-      justify-content: space-between;
-      overflow-x: auto;
+      min-width: 0;
+      gap: 4px;
+      overflow: visible;
 
-      &__link {
+      & .nav__link {
+        justify-content: center;
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        padding: 6px 4px;
         font-size: 14px;
+
+        & img {
+          width: 22px;
+          height: 22px;
+        }
+      }
+
+      & .category-dropdown {
+        min-width: 0;
+        z-index: 20;
+
+        & .category-menu {
+          top: calc(100% + 6px);
+          left: 50%;
+          transform: translateX(-50%);
+          width: 220px;
+        }
       }
     }
+
+    & > .hero {
+      min-height: 620px;
+    }
+
+    & > .hero .covers {
+      width: 100%;
+    }
+
+    & > .footer .newsletter__row {
+      flex-wrap: wrap;
+    }
+
+    & > .footer .newsletter input {
+      flex: 1 1 180px;
+      width: auto;
+      min-width: 0;
     }
 
     & > .footer .footer__inner {
@@ -609,12 +687,133 @@ main.page {
   }
 
   @media (max-width: 700px) {
+    & > .header {
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      grid-template-areas:
+        "brand theme login"
+        "search search search"
+        "nav nav nav";
+      gap: 10px;
+      min-height: 0;
+      padding: 10px 12px 12px;
+    }
+
+    & > .header .brand {
+      width: 60px;
+      height: 60px;
+    }
+
+    & > .header .theme {
+      width: 44px;
+      height: 44px;
+      margin-left: auto;
+    }
+
+    & > .header .login {
+      width: 44px;
+      min-width: 44px;
+      height: 44px;
+      padding: 5px 8px;
+    }
+
+    & > .header .login img {
+      width: 26px;
+      height: 26px;
+    }
+
+    & > .header .login {
+      font-size: 0;
+    }
+
+    & > .header .nav {
+      gap: 2px;
+      overflow: visible;
+    }
+
+    & > .header .nav .nav__link {
+      flex-direction: column;
+      gap: 2px;
+      min-height: 52px;
+      padding: 5px 2px;
+      font-size: 11px;
+
+      & img {
+        width: 21px;
+        height: 21px;
+      }
+    }
+
+    & > .header .nav .category-dropdown {
+      z-index: 20;
+
+      & .category-menu {
+        top: calc(100% + 6px);
+        left: 50%;
+        width: min(220px, calc(100vw - 24px));
+        transform: translateX(-50%);
+      }
+    }
+
     & > .header .search {
       width: 100%;
+      min-width: 0;
+      flex-basis: 100%;
+      height: 44px;
+    }
+
+    & > .hero {
+      min-height: 520px;
+    }
+
+    & > .hero .covers {
+      justify-content: flex-start;
+      padding: 20px 12px 32px;
+    }
+
+    & > .hero .covers.is-category-view {
+      justify-content: flex-start;
+    }
+
+    & > .hero .covers .card {
+      flex-basis: min(270px, calc(100vw - 40px));
+      height: 390px;
+    }
+
+    & > .hero .covers .card .card__title {
+      font-size: 20px;
+    }
+
+    & > .hero .covers .card .card__favorite {
+      min-height: 36px;
+      padding: 6px 8px;
     }
 
     & > .footer .footer__inner {
       grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 24px 16px;
+    }
+
+    & > .footer .footer__logo {
+      width: min(220px, 100%);
+      height: 100px;
+    }
+
+    & > .footer .newsletter input {
+      flex-basis: 100%;
+      height: 42px;
+    }
+
+    & > .footer .newsletter button {
+      width: 100%;
+      height: 42px;
+    }
+
+    & > .modal .modal__card {
+      width: calc(100vw - 24px);
+      max-height: calc(100vh - 24px);
+      overflow-y: auto;
+      padding: 20px;
     }
   }
 }
