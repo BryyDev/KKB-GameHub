@@ -1,0 +1,533 @@
+/* Todo o CSS parte da página principal. */
+main.page {
+  --bg: #050714;
+  --text: #fff;
+  --muted: rgb(255 255 255 / 55%);
+  --accent: #28e9af;
+  --accent-soft: #4cf8c3;
+  --card: rgb(6 45 57 / 94%);
+  --glow: rgb(21 247 174 / 68%);
+  --header-border: #9b9b9b;
+  --login: rgb(127 41 249 / 20%);
+  --footer-border: #24eaaf;
+  --input-border: rgb(255 255 255 / 25%);
+  --theme-border: rgb(207 207 207 / 25%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+
+  /* Estado usado antes de abrir o endereço do jogo. */
+  &.is-leaving {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  /* Tema claro controlado pelo próprio elemento main. */
+  &[data-theme="light"] {
+    --bg: #e8f4f6;
+    --text: #05212a;
+    --muted: rgb(5 33 42 / 55%);
+    --card: rgb(226 246 248 / 94%);
+    --header-border: #7aa0a8;
+    --login: rgb(127 41 249 / 35%);
+  }
+
+  /* Regras básicas somente para elementos dentro da página. */
+  & *,
+  & *::before,
+  & *::after {
+    box-sizing: border-box;
+  }
+
+  & a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  & button,
+  & input,
+  & figure,
+  & menu {
+    font: inherit;
+  }
+
+  /* Header */
+  & > .header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 93px;
+  padding: 0 60px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--header-border);
+  position: relative;
+  z-index: 2;
+
+  & .brand {
+    width: 93px;
+    height: 93px;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    & img {
+      width: 134%;
+      height: 100%;
+      object-fit: cover;
+      margin-left: -17%;
+      display: block;
+    }
+  }
+
+  & .nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex: 1;
+
+    &__link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: Poppins, sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      white-space: nowrap;
+      opacity: 0.85;
+
+      &:hover,
+      &.is-active {
+        opacity: 1;
+      }
+
+      & img {
+        width: 25px;
+        height: 25px;
+        object-fit: contain;
+      }
+    }
+  }
+
+  & .search {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    width: 282px;
+    height: 41px;
+    padding: 0 13px;
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    flex-shrink: 0;
+
+    & input {
+      flex: 1;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--text);
+      font-family: Poppins, sans-serif;
+      font-size: 10px;
+
+      &::placeholder {
+        color: var(--muted);
+      }
+    }
+  }
+
+  & .theme {
+    width: 47px;
+    height: 47px;
+    display: grid;
+    place-items: center;
+    padding: 10px;
+    border: 1px solid var(--theme-border);
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+
+    & img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  & .login {
+    width: 77px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 5px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--login);
+    color: #fff;
+    cursor: pointer;
+    font-family: Poppins, sans-serif;
+    font-size: 10px;
+
+    & img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  }
+
+  /* Área de jogos, aninhada diretamente na main. */
+  & > .hero {
+  position: relative;
+  flex: 1;
+  min-height: 753px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &::before {
+    inset: -20%;
+    background:
+      radial-gradient(ellipse at 50% 18%, rgb(0 210 255 / 55%) 0%, transparent 42%),
+      radial-gradient(ellipse at 18% 80%, rgb(40 233 175 / 18%) 0%, transparent 40%),
+      radial-gradient(ellipse at 82% 75%, rgb(0 140 255 / 22%) 0%, transparent 38%),
+      linear-gradient(180deg, #03101f 0%, #050714 100%);
+    z-index: -2;
+  }
+
+  &::after {
+    background: repeating-linear-gradient(
+      115deg,
+      transparent 0 40px,
+      rgb(90 255 255 / 4%) 40px 42px
+    );
+    mask-image: radial-gradient(ellipse at 50% 35%, #000 20%, transparent 70%);
+    z-index: -1;
+  }
+
+  & .hero__status {
+    margin: 0 0 18px;
+    color: var(--accent-soft);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  & .covers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: min(1310px, 100%);
+    padding: 24px 16px 40px;
+    overflow-x: auto;
+
+    /* Cada jogo é um botão para também funcionar com teclado. */
+    & .card {
+      flex: 0 0 270px;
+      height: 414px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 12px 11px 16px;
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      background: var(--card);
+      box-shadow: 0 0 28px 1px var(--glow);
+      color: inherit;
+      cursor: pointer;
+      transition: transform 0.2s ease, flex-basis 0.2s ease, height 0.2s ease;
+
+      &:hover {
+        transform: translateY(-6px);
+      }
+
+      &.is-featured {
+        flex-basis: 304px;
+        height: 466px;
+        z-index: 1;
+
+        & .card__badge {
+          visibility: visible;
+        }
+      }
+
+      & .card__art {
+        width: 100%;
+        flex: 1;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border: 1px dashed rgb(40 233 175 / 20%);
+        border-radius: 8px;
+        background: rgb(40 233 175 / 5%);
+
+        & img {
+          width: 92%;
+          height: 92%;
+          object-fit: cover;
+          border-radius: 11px;
+          display: block;
+        }
+      }
+
+      & .card__title {
+        margin: 0;
+        color: #e1eef2;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      & .card__badge {
+        width: 110px;
+        height: 24px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: rgb(37 231 173 / 12%);
+        color: var(--accent-soft);
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        visibility: hidden;
+      }
+
+      &[data-id="cs"] {
+        & .card__art img {
+          width: 136%;
+          height: 100%;
+          border-radius: 0;
+        }
+
+        & .card__title {
+          font-size: 14px;
+        }
+      }
+
+      &[data-id="pes"] .card__title {
+        font-size: 20px;
+      }
+    }
+  }
+
+  & .empty {
+    color: var(--muted);
+  }
+  }
+
+  /* Footer */
+  & > .footer {
+  min-height: 178px;
+  border-top: 1px solid var(--footer-border);
+  background: linear-gradient(180deg, #009ebf 0%, #04647d 42%, #023658 100%);
+
+  & .footer__inner {
+    max-width: 1440px;
+    min-height: 178px;
+    margin: 0 auto;
+    padding: 20px 48px;
+    display: grid;
+    grid-template-columns: 120px 1fr 120px minmax(280px, 340px);
+    align-items: center;
+    gap: 24px;
+  }
+
+  & .footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+
+    & a:hover {
+      color: #d7fff2;
+    }
+  }
+
+  & .footer__logo {
+    width: min(265px, 100%);
+    height: 130px;
+    object-fit: contain;
+    justify-self: center;
+  }
+  }
+
+  & .newsletter {
+  & .newsletter__title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 900;
+  }
+
+  & .newsletter__copy {
+    margin: 8px 0 12px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  & .newsletter__row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  & input {
+    width: 236px;
+    height: 37px;
+    padding: 0 13px;
+    border: 1px solid #22b78a;
+    border-radius: 16px;
+    background: #073740;
+    color: #fff;
+    font-size: 11px;
+
+    &::placeholder {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+
+  & button {
+    width: 66px;
+    height: 37px;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    background: #21eeaf;
+    color: #000;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  & .newsletter__msg {
+    margin: 8px 0 0;
+    font-size: 11px;
+  }
+  }
+
+  /* Modal de login. */
+  & > .modal {
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  &::backdrop {
+    background: rgb(0 0 0 / 65%);
+  }
+
+  & .modal__card {
+    width: min(360px, 92vw);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    background: #062d39;
+    color: #fff;
+
+    & h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    & label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    & input {
+      height: 40px;
+      padding: 0 12px;
+      border: 1px solid var(--input-border);
+      border-radius: 10px;
+      background: #050714;
+      color: #fff;
+    }
+  }
+
+  & .modal__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 0;
+
+    & button {
+      flex: 1;
+      height: 40px;
+      border-radius: 8px;
+      cursor: pointer;
+
+      &[type="submit"] {
+        border: 0;
+        background: #21eeaf;
+        color: #000;
+        font-weight: 600;
+      }
+
+      &[type="button"] {
+        border: 1px solid var(--accent);
+        background: transparent;
+        color: #fff;
+      }
+    }
+  }
+  }
+
+  /* Ajustes responsivos também continuam dentro do escopo da main. */
+  @media (max-width: 1100px) {
+    & > .header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 12px 20px;
+
+    & .nav {
+      order: 5;
+      width: 100%;
+      justify-content: space-between;
+      overflow-x: auto;
+
+      &__link {
+        font-size: 14px;
+      }
+    }
+    }
+
+    & > .footer .footer__inner {
+      grid-template-columns: 1fr 1fr;
+      padding: 24px 20px;
+    }
+
+    & > .footer .footer__logo {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 700px) {
+    & > .header .search {
+      width: 100%;
+    }
+
+    & > .footer .footer__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+}

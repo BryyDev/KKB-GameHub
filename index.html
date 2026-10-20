@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KKB Hub — Game Labs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Poppins:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <main class="page" id="inicio">
+      <!-- Cabeçalho com navegação, busca, tema e login. -->
+      <header class="header">
+        <a class="brand" href="#inicio" aria-label="KKB Hub">
+          <img src="assets/logo-header.png" alt="KKB Hub — browser games" />
+        </a>
+
+        <nav class="nav" aria-label="Principal">
+          <a class="nav__link is-active" href="#inicio" data-page="inicio">
+            <img src="assets/icon-home.png" alt="" width="25" height="25" />
+            inicio
+          </a>
+          <a class="nav__link" href="#explorar" data-page="explorar">
+            <img src="assets/icon-explore.svg" alt="" width="25" height="25" />
+            Explorar
+          </a>
+          <a class="nav__link" href="#categorias" data-page="categorias">
+            <img src="assets/icon-categories.png" alt="" width="25" height="25" />
+            Categorias
+          </a>
+          <a class="nav__link" href="#favoritos" data-page="favoritos">
+            <img src="assets/icon-favorites.png" alt="" width="25" height="25" />
+            Favoritos
+          </a>
+        </nav>
+
+        <label class="search">
+          <img src="assets/icon-search.svg" alt="" width="20" height="20" />
+          <input
+            id="search"
+            type="search"
+            placeholder="Buscar jogos"
+            autocomplete="off"
+          />
+        </label>
+
+        <button class="theme" type="button" id="theme-toggle" aria-label="Alternar tema">
+          <img src="assets/icon-theme.png" alt="" width="25" height="25" />
+        </button>
+
+        <button class="login" type="button" id="login-btn">
+          <img src="assets/icon-profile.png" alt="" width="30" height="30" />
+          Entrar
+        </button>
+      </header>
+
+      <!-- Os cards são criados pelo JavaScript. -->
+      <section class="hero" aria-label="Jogos em destaque">
+        <p class="hero__status" id="status" hidden></p>
+        <section class="covers" id="covers" aria-label="Jogos em destaque"></section>
+        <p class="empty" id="empty" hidden>Nenhum jogo encontrado.</p>
+      </section>
+
+      <!-- Links úteis e inscrição na newsletter. -->
+      <footer class="footer">
+        <section class="footer__inner" aria-label="Informações do site">
+          <nav class="footer__col" aria-label="Páginas">
+            <a href="#inicio">Início</a>
+            <a href="#explorar">Explorar</a>
+            <a href="#categorias">Categorias</a>
+            <a href="#favoritos">Favoritos</a>
+          </nav>
+
+          <img class="footer__logo" src="assets/logo-footer.png" alt="KKB Hub Browser Games" />
+
+          <nav class="footer__col" aria-label="Categorias">
+            <a href="#categorias" data-category="acao">Ação</a>
+            <a href="#categorias" data-category="esporte">Esporte</a>
+            <a href="#categorias" data-category="fps">FPS</a>
+            <a href="#categorias" data-category="corrida">Corrida</a>
+          </nav>
+
+          <form class="newsletter" id="newsletter">
+            <p class="newsletter__title">Fique por dentro</p>
+            <p class="newsletter__copy">Receba novidades e lançamentos de jogos.</p>
+            <section class="newsletter__row" aria-label="Inscrição na newsletter">
+              <input
+                type="email"
+                name="email"
+                placeholder="Seu@gmail.com"
+                required
+                autocomplete="email"
+              />
+              <button type="submit">ASSINAR</button>
+            </section>
+            <p class="newsletter__msg" id="newsletter-msg" hidden></p>
+          </form>
+        </section>
+      </footer>
+    <!-- Modal simples de login. -->
+    <dialog class="modal" id="login-modal">
+      <form method="dialog" class="modal__card" id="login-form">
+        <h2>Entrar</h2>
+        <label>
+          Email
+          <input type="email" name="email" required placeholder="Seu@gmail.com" />
+        </label>
+        <label>
+          Senha
+          <input type="password" name="password" required minlength="4" placeholder="••••••••" />
+        </label>
+        <menu class="modal__actions">
+          <button type="submit" value="login">Entrar</button>
+          <button type="button" id="login-cancel" value="cancel">Cancelar</button>
+        </menu>
+      </form>
+    </dialog>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
