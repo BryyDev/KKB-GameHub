@@ -2,6 +2,14 @@
 
 Este projeto é um hub de jogos feito com HTML, CSS e JavaScript puro. Os cards são gerados automaticamente a partir de uma lista de jogos no arquivo `js/main.js`.
 
+## Acesse o site
+
+Você pode acessar o KKB Hub diretamente pelo GitHub Pages:
+
+**[Abrir o KKB Hub](https://bryydev.github.io/KKB-GameHub/)**
+
+Não é necessário baixar o projeto para navegar pelos jogos. O README serve como um guia para quem quiser sugerir alterações, colaborar com o projeto ou ajudar a manter a página atualizada.
+
 ## Criadores e ideia do projeto
 
 O KKB Hub foi criado por:
@@ -11,6 +19,24 @@ O KKB Hub foi criado por:
 - [Bryant](https://github.com/BryyDev)
 
 Os três são sócios da ideia de preservar e reunir jogos antigos que podem ser executados pela web, facilitando o acesso a títulos clássicos em um único hub.
+
+## Projeto aberto a colaboradores
+
+Este é um projeto livre e aberto para colaboradores. Você pode ajudar adicionando jogos, corrigindo informações, melhorando o visual, corrigindo problemas ou enviando sugestões.
+
+### Como solicitar uma alteração na página
+
+Para pedir a inclusão de um jogo ou qualquer outra mudança:
+
+1. Faça um fork deste repositório.
+2. Edite os arquivos seguindo as instruções deste guia.
+3. Teste a alteração no navegador.
+4. Envie um **pull request** para o repositório principal.
+5. Descreva claramente o que foi alterado e, no caso de um jogo, informe o nome, a categoria, a imagem e o link usado.
+
+Depois da análise, a alteração poderá ser adicionada à página oficial. Se você não souber fazer a alteração diretamente, também pode abrir uma issue com a sua sugestão ou solicitação.
+
+Gostaríamos muito de receber feedbacks sobre a página, os jogos disponíveis e novas ideias para o projeto. Toda contribuição é bem-vinda.
 
 ## Estrutura do projeto
 
@@ -31,9 +57,9 @@ game-labs/
     └── main.js          # Jogos, filtros e interações
 ```
 
-## Como abrir o projeto
+## Como editar e testar o projeto
 
-Abra o arquivo `index.html` no navegador.
+Para fazer alterações, clone o repositório ou trabalhe em um fork. Depois, abra o arquivo `index.html` no navegador para conferir o resultado.
 
 Para uma experiência melhor durante o desenvolvimento, use o **Live Server** no VS Code:
 
