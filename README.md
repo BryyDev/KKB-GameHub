@@ -259,7 +259,7 @@ Encontre o objeto do jogo em `js/main.js` e altere os campos necessários:
 },
 ```
 
-Não altere o `id` sem necessidade. O `id` é usado para identificar o card selecionado e o jogo exibido na seção de favoritos.
+Não altere o `id` sem necessidade. O `id` é usado para identificar o card selecionado e salvar o jogo na lista de favoritos.
 
 ## Como excluir um jogo
 
@@ -505,7 +505,9 @@ Para escolher outro jogo inicialmente destacado, troque `gta` pelo `id` correspo
 let selectedId = "dbz";
 ```
 
-A página de favoritos atualmente mostra o jogo selecionado. Isso é uma implementação simples, não uma lista permanente de favoritos. Para criar favoritos reais, seria necessário armazenar vários `id`s, por exemplo usando `localStorage`.
+Cada card possui o botão **Favoritar**. Ao clicar nele, o jogo é salvo nos favoritos do navegador usando `localStorage`. Para consultar a lista, clique em **Favoritos** no menu principal.
+
+O filtro **Todas**, no menu de categorias, remove o filtro atual e exibe jogos de todas as categorias. Ao clicar em **Explorar**, o campo de busca recebe foco automaticamente para que você possa começar a digitar.
 
 ## Como corrigir problemas comuns
 
