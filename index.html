@@ -29,10 +29,22 @@
             <img src="assets/icon-explore.svg" alt="" width="25" height="25" />
             Explorar
           </a>
-          <a class="nav__link" href="#categorias" data-page="categorias">
-            <img src="assets/icon-categories.png" alt="" width="25" height="25" />
-            Categorias
-          </a>
+          <div class="category-dropdown">
+            <button class="nav__link" type="button" data-page="categorias" aria-expanded="false" aria-controls="category-menu">
+              <img src="assets/icon-categories.png" alt="" width="25" height="25" />
+              Categorias
+            </button>
+            <nav class="category-menu" id="category-menu" aria-label="Filtrar por categoria" hidden>
+              <strong>Escolha uma categoria</strong>
+              <div class="category-menu__links">
+                <a href="#categorias" data-category="">Todas</a>
+                <a href="#categorias" data-category="acao">Ação</a>
+                <a href="#categorias" data-category="esporte">Esporte</a>
+                <a href="#categorias" data-category="fps">FPS</a>
+                <a href="#categorias" data-category="corrida">Corrida</a>
+              </div>
+            </nav>
+          </div>
           <a class="nav__link" href="#favoritos" data-page="favoritos">
             <img src="assets/icon-favorites.png" alt="" width="25" height="25" />
             Favoritos
@@ -79,6 +91,7 @@
           <img class="footer__logo" src="assets/logo-footer.png" alt="KKB Hub Browser Games" />
 
           <nav class="footer__col" aria-label="Categorias">
+            <a href="#categorias" data-category="">Todas</a>
             <a href="#categorias" data-category="acao">Ação</a>
             <a href="#categorias" data-category="esporte">Esporte</a>
             <a href="#categorias" data-category="fps">FPS</a>
