@@ -1,4 +1,10 @@
 /* Todo o CSS parte da página principal. */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 main.page {
   --bg: #050714;
   --text: #fff;
