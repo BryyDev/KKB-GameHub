@@ -1,6 +1,8 @@
 # KKB Hub — Game Labs
 
-KKKKK GIGIGIGIGKDKDJJSA
+
+
+NKDFENFDNSJKHERWJKD
 
 Este projeto é um hub de jogos feito com HTML, CSS e JavaScript puro. Os cards são gerados automaticamente a partir de uma lista de jogos no arquivo `js/main.js`.
 
