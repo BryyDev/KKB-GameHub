@@ -1,819 +1,803 @@
 /* Todo o CSS parte da página principal. */
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-main.page {
-  --bg: #050714;
-  --text: #fff;
-  --muted: rgb(255 255 255 / 55%);
-  --accent: #28e9af;
-  --accent-soft: #4cf8c3;
-  --card: rgb(6 45 57 / 94%);
-  --glow: rgb(21 247 174 / 68%);
-  --header-border: #9b9b9b;
-  --login: rgb(127 41 249 / 20%);
-  --footer-border: #24eaaf;
-  --input-border: rgb(255 255 255 / 25%);
-  --theme-border: rgb(207 207 207 / 25%);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Inter, system-ui, sans-serif;
-  transition: opacity 0.35s ease, transform 0.35s ease;
+*{ /* Seleciona todos os elementos da página. */
+  margin: 0; /* Define o espaço externo: 0 em todos os lados. */
+  padding: 0; /* Define o espaço interno, entre o conteúdo e a borda: 0 em todos os lados. */
+  box-sizing: border-box; /* Faz largura e altura incluírem o preenchimento interno e a borda do elemento. */
+} /* Fecha este bloco de regras CSS. */
+main.page { /* Define as regras do elemento main que tem a classe page; as regras com & ficam dentro desse escopo. */
+  --bg: #050714; /* Cria a variável com a cor de fundo da página: #050714. */
+  --text: #fff; /* Cria a variável com a cor principal dos textos: #fff. */
+  --muted: rgb(255 255 255 / 55%); /* Cria a variável para textos com menos destaque: rgb(255 255 255 / 55%). */
+  --accent: #28e9af; /* Cria a variável com a cor de destaque das bordas e dos controles: #28e9af. */
+  --accent-soft: #4cf8c3; /* Cria a variável com a cor de destaque usada nos textos: #4cf8c3. */
+  --card: rgb(6 45 57 / 94%); /* Cria a variável com o fundo dos cards e do menu de categorias: rgb(6 45 57 / 94%). */
+  --glow: rgb(21 247 174 / 68%); /* Cria a variável com a cor do brilho ao redor dos cards: rgb(21 247 174 / 68%). */
+  --header-border: #9b9b9b; /* Cria a variável com a cor da linha abaixo do cabeçalho: #9b9b9b. */
+  --login: rgb(127 41 249 / 20%); /* Cria a variável com a cor de fundo do botão Entrar: rgb(127 41 249 / 20%). */
+  --footer-border: #24eaaf; /* Cria a variável com a cor da linha acima do rodapé: #24eaaf. */
+  --input-border: rgb(255 255 255 / 25%); /* Cria a variável com a cor da borda dos campos de entrada: rgb(255 255 255 / 25%). */
+  --theme-border: rgb(207 207 207 / 25%); /* Cria a variável com a cor da borda do botão de tema: rgb(207 207 207 / 25%). */
+  min-height: 100vh; /* Define a altura mínima como 100vh. vh é uma porcentagem da altura da janela. */
+  display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+  flex-direction: column; /* Organiza os itens flexíveis em uma coluna, de cima para baixo. */
+  background: var(--bg); /* Define o fundo usando a cor guardada na variável indicada por var(...). */
+  color: var(--text); /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+  font-family: Inter, system-ui, sans-serif; /* Define a sequência de fontes; se a primeira não existir, o navegador tenta as seguintes. */
+  transition: opacity 0.35s ease, transform 0.35s ease; /* Anima a mudança das propriedades indicadas, com a duração e a curva de velocidade informadas. */
 
   /* Estado usado antes de abrir o endereço do jogo. */
-  &.is-leaving {
-    opacity: 0;
-    transform: translateY(-12px);
-  }
+  &.is-leaving { /* Aplica estas regras ao elemento atual quando ele recebe a classe is-leaving, antes de abrir um jogo. */
+    opacity: 0; /* Define a opacidade como 0; 0 é invisível e 1 é totalmente opaco. */
+    transform: translateY(-12px); /* Move a página visualmente 12px para cima durante a saída. */
+  } /* Fecha este bloco de regras CSS. */
 
   /* Tema claro controlado pelo próprio elemento main. */
-  &[data-theme="light"] {
-    --bg: #e8f4f6;
-    --text: #05212a;
-    --muted: rgb(5 33 42 / 55%);
-    --card: rgb(226 246 248 / 94%);
-    --header-border: #7aa0a8;
-    --login: rgb(127 41 249 / 35%);
-  }
+  &[data-theme="light"] { /* Substitui as cores do elemento atual quando o atributo data-theme vale light. */
+    --bg: #e8f4f6; /* Cria a variável com a cor de fundo da página: #e8f4f6. */
+    --text: #05212a; /* Cria a variável com a cor principal dos textos: #05212a. */
+    --muted: rgb(5 33 42 / 55%); /* Cria a variável para textos com menos destaque: rgb(5 33 42 / 55%). */
+    --card: rgb(226 246 248 / 94%); /* Cria a variável com o fundo dos cards e do menu de categorias: rgb(226 246 248 / 94%). */
+    --header-border: #7aa0a8; /* Cria a variável com a cor da linha abaixo do cabeçalho: #7aa0a8. */
+    --login: rgb(127 41 249 / 35%); /* Cria a variável com a cor de fundo do botão Entrar: rgb(127 41 249 / 35%). */
+  } /* Fecha este bloco de regras CSS. */
 
   /* Regras básicas somente para elementos dentro da página. */
-  & *,
-  & *::before,
-  & *::after {
-    box-sizing: border-box;
-  }
+  & *, /* Seleciona todos os elementos descendentes do bloco atual; & representa o seletor do bloco externo. A vírgula inclui o próximo seletor no mesmo grupo. */
+  & *::before, /* Seleciona o pseudo-elemento ::before, uma camada que o CSS pode criar antes do conteúdo de todos os elementos descendentes do bloco atual. A vírgula inclui o próximo seletor no mesmo grupo. */
+  & *::after { /* Seleciona o pseudo-elemento ::after, uma camada que o CSS pode criar depois do conteúdo de todos os elementos descendentes do bloco atual. */
+    box-sizing: border-box; /* Faz largura e altura incluírem o preenchimento interno e a borda do elemento. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & a {
-    color: inherit;
-    text-decoration: none;
-  }
+  & a { /* Seleciona os links do bloco atual; & representa o seletor do bloco externo. */
+    color: inherit; /* Usa a mesma cor de texto do elemento pai. */
+    text-decoration: none; /* Remove a decoração padrão do texto, como o sublinhado dos links. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & button,
-  & input,
-  & figure,
-  & menu {
-    font: inherit;
-  }
+  & button, /* Seleciona os botões do bloco atual; & representa o seletor do bloco externo. A vírgula inclui o próximo seletor no mesmo grupo. */
+  & input, /* Seleciona os campos de entrada do bloco atual; & representa o seletor do bloco externo. A vírgula inclui o próximo seletor no mesmo grupo. */
+  & figure, /* Seleciona os elementos figure do bloco atual; & representa o seletor do bloco externo. A vírgula inclui o próximo seletor no mesmo grupo. */
+  & menu { /* Seleciona os elementos menu do bloco atual; & representa o seletor do bloco externo. */
+    font: inherit; /* Faz o elemento usar a configuração de fonte herdada do elemento pai. */
+  } /* Fecha este bloco de regras CSS. */
 
   /* Header */
-  & > .header {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  height: 93px;
-  padding: 0 60px;
-  background: var(--bg);
-  border-bottom: 1px solid var(--header-border);
-  position: relative;
-  z-index: 2;
+  & > .header { /* Seleciona o cabeçalho; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+  display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+  align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+  gap: 18px; /* Define o espaço entre os itens: 18px. */
+  height: 93px; /* Define a altura como 93px. */
+  padding: 0 60px; /* Define o espaço interno, entre o conteúdo e a borda: 0 em cima e embaixo e 60px nas laterais. */
+  background: var(--bg); /* Define o fundo usando a cor guardada na variável indicada por var(...). */
+  border-bottom: 1px solid var(--header-border); /* Define a borda inferior, indicando espessura, estilo e cor. */
+  position: relative; /* Mantém o elemento no fluxo e cria uma referência para descendentes posicionados. */
+  z-index: 2; /* Define a ordem de sobreposição nesta pilha como 2; valores maiores ficam à frente. */
 
-  & .brand {
-    width: 93px;
-    height: 93px;
-    flex-shrink: 0;
-    overflow: hidden;
+  & .brand { /* Seleciona o link do logotipo; & representa o seletor do bloco externo. */
+    width: 93px; /* Define a largura como 93px. */
+    height: 93px; /* Define a altura como 93px. */
+    flex-shrink: 0; /* Impede que este item seja encolhido pelo layout flexível. */
+    overflow: hidden; /* Recorta o conteúdo que ultrapassa os limites do elemento. */
 
-    & img {
-      width: 134%;
-      height: 100%;
-      object-fit: cover;
-      margin-left: -17%;
-      display: block;
-    }
-  }
+    & img { /* Seleciona as imagens do bloco atual; & representa o seletor do bloco externo. */
+      width: 134%; /* Define a largura como 134%. */
+      height: 100%; /* Define a altura como 100%. */
+      object-fit: cover; /* Preenche a área da imagem preservando sua proporção e recortando o que sobrar. */
+      margin-left: -17%; /* Define a margem esquerda como -17%; um valor negativo desloca a imagem para a esquerda. */
+      display: block; /* Faz o elemento ocupar uma linha como um bloco. */
+    } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & .nav {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    flex: 1;
+  & .nav { /* Seleciona a navegação principal; & representa o seletor do bloco externo. */
+    display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+    align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+    gap: 28px; /* Define o espaço entre os itens: 28px. */
+    flex: 1; /* Permite que o item cresça e encolha para dividir o espaço disponível. */
 
-    & .category-dropdown {
-      position: relative;
+    & .category-dropdown { /* Seleciona o contêiner do menu de categorias; & representa o seletor do bloco externo. */
+      position: relative; /* Mantém o elemento no fluxo e cria uma referência para descendentes posicionados. */
 
-      & .category-menu {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 0;
-        z-index: 3;
-        width: 220px;
-        padding: 10px;
-        border: 1px solid var(--accent);
-        border-radius: 8px;
-        background: var(--card);
-        box-shadow: 0 8px 24px rgb(0 0 0 / 35%);
-        text-align: left;
+      & .category-menu { /* Seleciona o menu de categorias; & representa o seletor do bloco externo. */
+        position: absolute; /* Posiciona o elemento fora do fluxo normal, em relação ao ancestral que serve de referência. */
+        top: calc(100% + 10px); /* Define a distância a partir do topo da referência de posicionamento: calc(100% + 10px). */
+        left: 0; /* Define a posição horizontal a partir da esquerda: 0. */
+        z-index: 3; /* Define a ordem de sobreposição nesta pilha como 3; valores maiores ficam à frente. */
+        width: 220px; /* Define a largura como 220px. */
+        padding: 10px; /* Define o espaço interno, entre o conteúdo e a borda: 10px em todos os lados. */
+        border: 1px solid var(--accent); /* Define a borda, indicando espessura, estilo e cor. */
+        border-radius: 8px; /* Arredonda os cantos com um raio de 8px. */
+        background: var(--card); /* Define o fundo usando a cor guardada na variável indicada por var(...). */
+        box-shadow: 0 8px 24px rgb(0 0 0 / 35%); /* Cria uma sombra ou brilho; os valores controlam deslocamento, desfoque, expansão opcional e cor. */
+        text-align: left; /* Alinha o texto à esquerda. */
 
-        & strong {
-          display: block;
-          padding: 6px 8px 10px;
-          color: var(--accent-soft);
-          font-size: 12px;
-        }
+        & strong { /* Seleciona o texto em destaque do bloco atual; & representa o seletor do bloco externo. */
+          display: block; /* Faz o elemento ocupar uma linha como um bloco. */
+          padding: 6px 8px 10px; /* Define o espaço interno, entre o conteúdo e a borda: 6px em cima, 8px nas laterais e 10px embaixo. */
+          color: var(--accent-soft); /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+          font-size: 12px; /* Define o tamanho das letras como 12px. */
+        } /* Fecha este bloco de regras CSS. */
 
-        & .category-menu__links {
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
+        & .category-menu__links { /* Seleciona o grupo de links de categorias; & representa o seletor do bloco externo. */
+          display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+          flex-direction: column; /* Organiza os itens flexíveis em uma coluna, de cima para baixo. */
+          gap: 2px; /* Define o espaço entre os itens: 2px. */
 
-          & a {
-            display: block;
-            width: 100%;
-            padding: 9px 10px;
-            border-radius: 5px;
-            color: var(--text);
-            font-family: Poppins, sans-serif;
-            font-size: 13px;
+          & a { /* Seleciona os links do bloco atual; & representa o seletor do bloco externo. */
+            display: block; /* Faz o elemento ocupar uma linha como um bloco. */
+            width: 100%; /* Define a largura como 100%. */
+            padding: 9px 10px; /* Define o espaço interno, entre o conteúdo e a borda: 9px em cima e embaixo e 10px nas laterais. */
+            border-radius: 5px; /* Arredonda os cantos com um raio de 5px. */
+            color: var(--text); /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+            font-family: Poppins, sans-serif; /* Define a sequência de fontes; se a primeira não existir, o navegador tenta as seguintes. */
+            font-size: 13px; /* Define o tamanho das letras como 13px. */
 
-            &:hover,
-            &:focus-visible {
-              background: var(--accent);
-              color: #05212a;
-            }
-          }
-        }
-      }
-    }
+            &:hover, /* Aplica estas regras enquanto o ponteiro está sobre o elemento do bloco atual. A vírgula inclui o próximo seletor no mesmo grupo. */
+            &:focus-visible { /* Aplica estas regras quando o elemento recebe foco que o navegador deve destacar, como na navegação pelo teclado. */
+              background: var(--accent); /* Define o fundo usando a cor guardada na variável indicada por var(...). */
+              color: #05212a; /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+            } /* Fecha este bloco de regras CSS. */
+          } /* Fecha este bloco de regras CSS. */
+        } /* Fecha este bloco de regras CSS. */
+      } /* Fecha este bloco de regras CSS. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & .nav__link {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-family: Poppins, sans-serif;
-      font-weight: 500;
-      font-size: 20px;
-      white-space: nowrap;
-      opacity: 0.85;
-      padding: 0;
-      border: 0;
-      background: var(--bg);
-      color: inherit;
-      cursor: pointer;
-      appearance: none;
-      -webkit-appearance: none;
+    & .nav__link { /* Seleciona os itens da navegação; & representa o seletor do bloco externo. */
+      display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+      align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+      gap: 5px; /* Define o espaço entre os itens: 5px. */
+      font-family: Poppins, sans-serif; /* Define a sequência de fontes; se a primeira não existir, o navegador tenta as seguintes. */
+      font-weight: 500; /* Define o peso da fonte como 500; valores maiores deixam as letras mais grossas. */
+      font-size: 20px; /* Define o tamanho das letras como 20px. */
+      white-space: nowrap; /* Mantém o texto em uma única linha, sem quebra automática. */
+      opacity: 0.85; /* Define a opacidade como 0.85; 0 é invisível e 1 é totalmente opaco. */
+      padding: 0; /* Define o espaço interno, entre o conteúdo e a borda: 0 em todos os lados. */
+      border: 0; /* Remove a borda do elemento. */
+      background: var(--bg); /* Define o fundo usando a cor guardada na variável indicada por var(...). */
+      color: inherit; /* Usa a mesma cor de texto do elemento pai. */
+      cursor: pointer; /* Mostra o cursor de mão para indicar que o elemento pode ser clicado. */
+      appearance: none; /* Remove a aparência nativa do controle para aplicar o visual definido no CSS. */
+      -webkit-appearance: none; /* Remove a aparência nativa em navegadores que usam a versão prefixada dessa propriedade. */
 
-      &:hover,
-      &.is-active {
-        opacity: 1;
-      }
+      &:hover, /* Aplica estas regras enquanto o ponteiro está sobre o elemento do bloco atual. A vírgula inclui o próximo seletor no mesmo grupo. */
+      &.is-active { /* Aplica estas regras ao item atual quando ele tem a classe is-active. */
+        opacity: 1; /* Define a opacidade como 1; 0 é invisível e 1 é totalmente opaco. */
+      } /* Fecha este bloco de regras CSS. */
 
-      & img {
-        width: 25px;
-        height: 25px;
-        object-fit: contain;
-      }
-    }
-  }
+      & img { /* Seleciona as imagens do bloco atual; & representa o seletor do bloco externo. */
+        width: 25px; /* Define a largura como 25px. */
+        height: 25px; /* Define a altura como 25px. */
+        object-fit: contain; /* Encaixa a imagem inteira na área disponível, preservando sua proporção. */
+      } /* Fecha este bloco de regras CSS. */
+    } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & .search {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    width: 282px;
-    height: 41px;
-    padding: 0 13px;
-    border: 1px solid var(--input-border);
-    border-radius: 10px;
-    flex-shrink: 0;
+  & .search { /* Seleciona a área de busca; & representa o seletor do bloco externo. */
+    display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+    align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+    gap: 11px; /* Define o espaço entre os itens: 11px. */
+    width: 282px; /* Define a largura como 282px. */
+    height: 41px; /* Define a altura como 41px. */
+    padding: 0 13px; /* Define o espaço interno, entre o conteúdo e a borda: 0 em cima e embaixo e 13px nas laterais. */
+    border: 1px solid var(--input-border); /* Define a borda, indicando espessura, estilo e cor. */
+    border-radius: 10px; /* Arredonda os cantos com um raio de 10px. */
+    flex-shrink: 0; /* Impede que este item seja encolhido pelo layout flexível. */
 
-    & input {
-      flex: 1;
-      border: 0;
-      outline: 0;
-      background: transparent;
-      color: var(--text);
-      font-family: Poppins, sans-serif;
-      font-size: 16px;
+    & input { /* Seleciona os campos de entrada do bloco atual; & representa o seletor do bloco externo. */
+      flex: 1; /* Permite que o item cresça e encolha para dividir o espaço disponível. */
+      border: 0; /* Remove a borda do elemento. */
+      outline: 0; /* Remove o contorno padrão do elemento. */
+      background: transparent; /* Deixa o fundo transparente. */
+      color: var(--text); /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+      font-family: Poppins, sans-serif; /* Define a sequência de fontes; se a primeira não existir, o navegador tenta as seguintes. */
+      font-size: 16px; /* Define o tamanho das letras como 16px. */
 
-      &::placeholder {
-        color: var(--muted);
-      }
-    }
-  }
+      &::placeholder { /* Seleciona o texto de exemplo mostrado enquanto o campo está vazio. */
+        color: var(--muted); /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+      } /* Fecha este bloco de regras CSS. */
+    } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & .theme {
-    width: 47px;
-    height: 47px;
-    display: grid;
-    place-items: center;
-    padding: 10px;
-    border: 1px solid var(--theme-border);
-    border-radius: 10px;
-    background: transparent;
-    cursor: pointer;
+  & .theme { /* Seleciona o botão de tema; & representa o seletor do bloco externo. */
+    width: 47px; /* Define a largura como 47px. */
+    height: 47px; /* Define a altura como 47px. */
+    display: grid; /* Organiza os filhos em uma grade de linhas e colunas. */
+    place-items: center; /* Centraliza os itens nos dois eixos dentro do grid. */
+    padding: 10px; /* Define o espaço interno, entre o conteúdo e a borda: 10px em todos os lados. */
+    border: 1px solid var(--theme-border); /* Define a borda, indicando espessura, estilo e cor. */
+    border-radius: 10px; /* Arredonda os cantos com um raio de 10px. */
+    background: transparent; /* Deixa o fundo transparente. */
+    cursor: pointer; /* Mostra o cursor de mão para indicar que o elemento pode ser clicado. */
 
-    & img {
-      width: 25px;
-      height: 25px;
-    }
-  }
+    & img { /* Seleciona as imagens do bloco atual; & representa o seletor do bloco externo. */
+      width: 25px; /* Define a largura como 25px. */
+      height: 25px; /* Define a altura como 25px. */
+    } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & .login {
-    width: 77px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    padding: 5px;
-    border: 0;
-    border-radius: 10px;
-    background: var(--login);
-    color: #fff;
-    cursor: pointer;
-    font-family: Poppins, sans-serif;
-    font-size: 10px;
+  & .login { /* Seleciona o botão Entrar; & representa o seletor do bloco externo. */
+    width: 77px; /* Define a largura como 77px. */
+    height: 40px; /* Define a altura como 40px. */
+    display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+    align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+    justify-content: center; /* Centraliza os itens no eixo principal do contêiner. */
+    gap: 7px; /* Define o espaço entre os itens: 7px. */
+    padding: 5px; /* Define o espaço interno, entre o conteúdo e a borda: 5px em todos os lados. */
+    border: 0; /* Remove a borda do elemento. */
+    border-radius: 10px; /* Arredonda os cantos com um raio de 10px. */
+    background: var(--login); /* Define o fundo usando a cor guardada na variável indicada por var(...). */
+    color: #fff; /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+    cursor: pointer; /* Mostra o cursor de mão para indicar que o elemento pode ser clicado. */
+    font-family: Poppins, sans-serif; /* Define a sequência de fontes; se a primeira não existir, o navegador tenta as seguintes. */
+    font-size: 10px; /* Define o tamanho das letras como 10px. */
 
-    & img {
-      width: 30px;
-      height: 30px;
-    }
-  }
-  }
+    & img { /* Seleciona as imagens do bloco atual; & representa o seletor do bloco externo. */
+      width: 30px; /* Define a largura como 30px. */
+      height: 30px; /* Define a altura como 30px. */
+    } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
   /* Área de jogos, aninhada diretamente na main. */
-  & > .hero {
-  position: relative;
-  flex: 1;
-  min-height: 753px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  isolation: isolate;
+  & > .hero { /* Seleciona a área de jogos; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+  position: relative; /* Mantém o elemento no fluxo e cria uma referência para descendentes posicionados. */
+  flex: 1; /* Permite que o item cresça e encolha para dividir o espaço disponível. */
+  min-height: 753px; /* Define a altura mínima como 753px. */
+  overflow: hidden; /* Recorta o conteúdo que ultrapassa os limites do elemento. */
+  display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+  flex-direction: column; /* Organiza os itens flexíveis em uma coluna, de cima para baixo. */
+  align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+  justify-content: center; /* Centraliza os itens no eixo principal do contêiner. */
+  isolation: isolate; /* Cria um contexto de empilhamento próprio para manter as camadas decorativas nesta área. */
 
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
+  & .hero__video { /* Seleciona o vídeo dentro da área de jogos. */
+    position: absolute; /* Tira o vídeo do fluxo para não empurrar os cards. */
+    inset: 0; /* Posiciona o vídeo nas quatro bordas dessa área. */
+    width: 100%; /* Preenche toda a largura. */
+    height: 100%; /* Preenche toda a altura. */
+    object-fit: cover; /* Preenche sem distorcer; recorta as sobras se necessário. */
+    z-index: -1; /* Coloca o vídeo atrás dos cards dentro da seção isolada. */
+    pointer-events: none; /* Faz os cliques passarem pelo vídeo. */
+  } /* Fecha os estilos do vídeo. */
 
-  &::before {
-    inset: -20%;
-    background:
-      radial-gradient(ellipse at 50% 18%, rgb(0 210 255 / 55%) 0%, transparent 42%),
-      radial-gradient(ellipse at 18% 80%, rgb(40 233 175 / 18%) 0%, transparent 40%),
-      radial-gradient(ellipse at 82% 75%, rgb(0 140 255 / 22%) 0%, transparent 38%),
-      linear-gradient(180deg, #03101f 0%, #050714 100%);
-    z-index: -2;
-  }
+  & .hero__status { /* Seleciona a mensagem de estado dos jogos; & representa o seletor do bloco externo. */
+    margin: 0 0 18px; /* Define o espaço externo: 0 em cima, 0 nas laterais e 18px embaixo. */
+    color: var(--accent-soft); /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+    font-size: 13px; /* Define o tamanho das letras como 13px. */
+    font-weight: 600; /* Define o peso da fonte como 600; valores maiores deixam as letras mais grossas. */
+  } /* Fecha este bloco de regras CSS. */
 
-  &::after {
-    background: repeating-linear-gradient(
-      115deg,
-      transparent 0 40px,
-      rgb(90 255 255 / 4%) 40px 42px
-    );
-    mask-image: radial-gradient(ellipse at 50% 35%, #000 20%, transparent 70%);
-    z-index: -1;
-  }
+  & .covers { /* Seleciona a faixa de cards; & representa o seletor do bloco externo. */
+    display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+    align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+    justify-content: flex-start; /* Alinha os itens ao início do eixo principal. */
+    gap: 10px; /* Define o espaço entre os itens: 10px. */
+    width: min(1310px, 100%); /* Define a largura como min(1310px, 100%). min(...) escolhe o menor valor entre as opções. */
+    padding: 24px 16px 40px; /* Define o espaço interno, entre o conteúdo e a borda: 24px em cima, 16px nas laterais e 40px embaixo. */
+    overflow-x: auto; /* Cria rolagem horizontal quando o conteúdo ultrapassa a largura disponível. */
+    overscroll-behavior-x: contain; /* Evita encadear a rolagem horizontal para a área externa ao chegar ao limite. */
+    touch-action: pan-x; /* Permite ao navegador tratar o gesto de arrastar na horizontal em telas sensíveis ao toque. */
+    scrollbar-width: none; /* Oculta a barra de rolagem nos navegadores que reconhecem essa propriedade. */
 
-  & .hero__status {
-    margin: 0 0 18px;
-    color: var(--accent-soft);
-    font-size: 13px;
-    font-weight: 600;
-  }
+    &::-webkit-scrollbar { /* Seleciona a barra de rolagem em navegadores que reconhecem esse pseudo-elemento. */
+      display: none; /* Esconde o elemento e remove o espaço que ele ocuparia. */
+    } /* Fecha este bloco de regras CSS. */
 
-  & .covers {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-    width: min(1310px, 100%);
-    padding: 24px 16px 40px;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    touch-action: pan-x;
-    scrollbar-width: none;
+    &.is-category-view { /* Aplica estas regras à faixa atual quando ela está na visualização de categorias. */
+      justify-content: center; /* Centraliza os itens no eixo principal do contêiner. */
+    } /* Fecha este bloco de regras CSS. */
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    & .card { /* Seleciona cada card de jogo; & representa o seletor do bloco externo. */
+      flex: 0 0 270px; /* Mantém o card com base de 270px, sem crescer nem encolher. */
+      height: 414px; /* Define a altura como 414px. */
+      display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+      flex-direction: column; /* Organiza os itens flexíveis em uma coluna, de cima para baixo. */
+      align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+      justify-content: center; /* Centraliza os itens no eixo principal do contêiner. */
+      gap: 14px; /* Define o espaço entre os itens: 14px. */
+      padding: 12px 11px 16px; /* Define o espaço interno, entre o conteúdo e a borda: 12px em cima, 11px nas laterais e 16px embaixo. */
+      border: 2px solid var(--accent); /* Define a borda, indicando espessura, estilo e cor. */
+      border-radius: 12px; /* Arredonda os cantos com um raio de 12px. */
+      background: var(--card); /* Define o fundo usando a cor guardada na variável indicada por var(...). */
+      box-shadow: 0 0 28px 1px var(--glow); /* Cria uma sombra ou brilho; os valores controlam deslocamento, desfoque, expansão opcional e cor. */
+      color: inherit; /* Usa a mesma cor de texto do elemento pai. */
+      cursor: pointer; /* Mostra o cursor de mão para indicar que o elemento pode ser clicado. */
+      outline: 0; /* Remove o contorno padrão do elemento. */
+      transition: transform 0.2s ease; /* Anima a mudança das propriedades indicadas, com a duração e a curva de velocidade informadas. */
 
-    &.is-category-view {
-      justify-content: center;
-    }
+      &:hover, /* Aplica estas regras enquanto o ponteiro está sobre o elemento do bloco atual. A vírgula inclui o próximo seletor no mesmo grupo. */
+      &:focus-visible { /* Aplica estas regras quando o elemento recebe foco que o navegador deve destacar, como na navegação pelo teclado. */
+        transform: translateY(-6px) scale(1.04); /* Move o card 6px para cima e aumenta seu tamanho visual para 104%. */
+        z-index: 1; /* Define a ordem de sobreposição nesta pilha como 1; valores maiores ficam à frente. */
+      } /* Fecha este bloco de regras CSS. */
 
-    & .card {
-      flex: 0 0 270px;
-      height: 414px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      padding: 12px 11px 16px;
-      border: 2px solid var(--accent);
-      border-radius: 12px;
-      background: var(--card);
-      box-shadow: 0 0 28px 1px var(--glow);
-      color: inherit;
-      cursor: pointer;
-      outline: 0;
-      transition: transform 0.2s ease;
+      & .card__art { /* Seleciona a área da capa do jogo; & representa o seletor do bloco externo. */
+        width: 100%; /* Define a largura como 100%. */
+        flex: 1; /* Permite que o item cresça e encolha para dividir o espaço disponível. */
+        margin: 0; /* Define o espaço externo: 0 em todos os lados. */
+        display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+        align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+        justify-content: center; /* Centraliza os itens no eixo principal do contêiner. */
+        overflow: hidden; /* Recorta o conteúdo que ultrapassa os limites do elemento. */
+        border: 1px dashed rgb(40 233 175 / 20%); /* Define a borda, indicando espessura, estilo e cor. */
+        border-radius: 8px; /* Arredonda os cantos com um raio de 8px. */
+        background: rgb(40 233 175 / 5%); /* Define a cor de fundo do elemento. */
 
-      &:hover,
-      &:focus-visible {
-        transform: translateY(-6px) scale(1.04);
-        z-index: 1;
-      }
+        & img { /* Seleciona as imagens do bloco atual; & representa o seletor do bloco externo. */
+          width: 92%; /* Define a largura como 92%. */
+          height: 92%; /* Define a altura como 92%. */
+          object-fit: cover; /* Preenche a área da imagem preservando sua proporção e recortando o que sobrar. */
+          border-radius: 11px; /* Arredonda os cantos com um raio de 11px. */
+          display: block; /* Faz o elemento ocupar uma linha como um bloco. */
+        } /* Fecha este bloco de regras CSS. */
+      } /* Fecha este bloco de regras CSS. */
 
-      & .card__art {
-        width: 100%;
-        flex: 1;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        border: 1px dashed rgb(40 233 175 / 20%);
-        border-radius: 8px;
-        background: rgb(40 233 175 / 5%);
+      & .card__title { /* Seleciona o título do jogo; & representa o seletor do bloco externo. */
+        margin: 0; /* Define o espaço externo: 0 em todos os lados. */
+        color: #e1eef2; /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+        font-size: 24px; /* Define o tamanho das letras como 24px. */
+        font-weight: 700; /* Define o peso da fonte como 700; valores maiores deixam as letras mais grossas. */
+        text-align: center; /* Alinha o texto ao centro. */
+      } /* Fecha este bloco de regras CSS. */
 
-        & img {
-          width: 92%;
-          height: 92%;
-          object-fit: cover;
-          border-radius: 11px;
-          display: block;
-        }
-      }
+      & .card__actions { /* Seleciona a área dações do card; & representa o seletor do bloco externo. */
+        width: 100%; /* Define a largura como 100%. */
+        min-height: 28px; /* Define a altura mínima como 28px. */
+        display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+        align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+        justify-content: space-between; /* Distribui os itens, deixando espaço livre entre eles. */
+        gap: 8px; /* Define o espaço entre os itens: 8px. */
+      } /* Fecha este bloco de regras CSS. */
 
-      & .card__title {
-        margin: 0;
-        color: #e1eef2;
-        font-size: 24px;
-        font-weight: 700;
-        text-align: center;
-      }
+      & .card__badge { /* Seleciona o selo SELECIONADO; & representa o seletor do bloco externo. */
+        width: 110px; /* Define a largura como 110px. */
+        height: 24px; /* Define a altura como 24px. */
+        display: grid; /* Organiza os filhos em uma grade de linhas e colunas. */
+        place-items: center; /* Centraliza os itens nos dois eixos dentro do grid. */
+        border-radius: 12px; /* Arredonda os cantos com um raio de 12px. */
+        background: rgb(37 231 173 / 12%); /* Define a cor de fundo do elemento. */
+        color: var(--accent-soft); /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+        font-size: 9px; /* Define o tamanho das letras como 9px. */
+        font-weight: 600; /* Define o peso da fonte como 600; valores maiores deixam as letras mais grossas. */
+        letter-spacing: 0.04em; /* Acrescenta um espaço de 0.04em entre as letras. */
+        visibility: hidden; /* Oculta o selo, mas mantém o espaço que ele ocupa no layout. */
+      } /* Fecha este bloco de regras CSS. */
 
-      & .card__actions {
-        width: 100%;
-        min-height: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-      }
+      & .card__favorite { /* Seleciona o botão de favoritos; & representa o seletor do bloco externo. */
+        min-height: 28px; /* Define a altura mínima como 28px. */
+        padding: 5px 8px; /* Define o espaço interno, entre o conteúdo e a borda: 5px em cima e embaixo e 8px nas laterais. */
+        border: 1px solid var(--accent); /* Define a borda, indicando espessura, estilo e cor. */
+        border-radius: 8px; /* Arredonda os cantos com um raio de 8px. */
+        background: transparent; /* Deixa o fundo transparente. */
+        color: var(--accent-soft); /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+        cursor: pointer; /* Mostra o cursor de mão para indicar que o elemento pode ser clicado. */
+        font: inherit; /* Faz o elemento usar a configuração de fonte herdada do elemento pai. */
+        font-size: 10px; /* Define o tamanho das letras como 10px. */
 
-      & .card__badge {
-        width: 110px;
-        height: 24px;
-        display: grid;
-        place-items: center;
-        border-radius: 12px;
-        background: rgb(37 231 173 / 12%);
-        color: var(--accent-soft);
-        font-size: 9px;
-        font-weight: 600;
-        letter-spacing: 0.04em;
-        visibility: hidden;
-      }
+        &:hover, /* Aplica estas regras enquanto o ponteiro está sobre o elemento do bloco atual. A vírgula inclui o próximo seletor no mesmo grupo. */
+        &:focus-visible { /* Aplica estas regras quando o elemento recebe foco que o navegador deve destacar, como na navegação pelo teclado. */
+          background: rgb(37 231 173 / 15%); /* Define a cor de fundo do elemento. */
+        } /* Fecha este bloco de regras CSS. */
+      } /* Fecha este bloco de regras CSS. */
 
-      & .card__favorite {
-        min-height: 28px;
-        padding: 5px 8px;
-        border: 1px solid var(--accent);
-        border-radius: 8px;
-        background: transparent;
-        color: var(--accent-soft);
-        cursor: pointer;
-        font: inherit;
-        font-size: 10px;
+      &[data-id="cs"] { /* Aplica estes ajustes somente ao card com data-id igual a cs. */
+        & .card__art img { /* Seleciona as imagens dentro da área da capa do jogo; & representa o seletor do bloco externo. */
+          width: 136%; /* Define a largura como 136%. */
+          height: 100%; /* Define a altura como 100%. */
+          border-radius: 0; /* Arredonda os cantos com um raio de 0. */
+        } /* Fecha este bloco de regras CSS. */
 
-        &:hover,
-        &:focus-visible {
-          background: rgb(37 231 173 / 15%);
-        }
-      }
+        & .card__title { /* Seleciona o título do jogo; & representa o seletor do bloco externo. */
+          font-size: 14px; /* Define o tamanho das letras como 14px. */
+        } /* Fecha este bloco de regras CSS. */
+      } /* Fecha este bloco de regras CSS. */
 
-      &[data-id="cs"] {
-        & .card__art img {
-          width: 136%;
-          height: 100%;
-          border-radius: 0;
-        }
+      &[data-id="pes"] .card__title { /* Seleciona o título do jogo; & representa o seletor do bloco externo. O filtro data-id restringe o ajuste ao jogo PES. */
+        font-size: 20px; /* Define o tamanho das letras como 20px. */
+      } /* Fecha este bloco de regras CSS. */
+    } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
-        & .card__title {
-          font-size: 14px;
-        }
-      }
-
-      &[data-id="pes"] .card__title {
-        font-size: 20px;
-      }
-    }
-  }
-
-  & .empty {
-    color: var(--muted);
-  }
-  }
+  & .empty { /* Seleciona a mensagem de lista vazia; & representa o seletor do bloco externo. */
+    color: var(--muted); /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+  } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
   /* Footer */
-  & > .footer {
-  min-height: 178px;
-  border-top: 1px solid var(--footer-border);
-  background: linear-gradient(180deg, #009ebf 0%, #04647d 42%, #023658 100%);
+  & > .footer { /* Seleciona o rodapé; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+  min-height: 178px; /* Define a altura mínima como 178px. */
+  border-top: 1px solid var(--footer-border); /* Define a borda superior, indicando espessura, estilo e cor. */
+  background: linear-gradient(180deg, #009ebf 0%, #04647d 42%, #023658 100%); /* Preenche o fundo com um degradê, usando as cores e as posições indicadas. */
 
-  & .footer__inner {
-    max-width: 1440px;
-    min-height: 178px;
-    margin: 0 auto;
-    padding: 20px 48px;
-    display: grid;
-    grid-template-columns: 120px 1fr 120px minmax(280px, 340px);
-    align-items: center;
-    gap: 24px;
-  }
+  & .footer__inner { /* Seleciona o conteúdo interno do rodapé; & representa o seletor do bloco externo. */
+    max-width: 1440px; /* Define a largura máxima como 1440px. */
+    min-height: 178px; /* Define a altura mínima como 178px. */
+    margin: 0 auto; /* Define o espaço externo: 0 em cima e embaixo e auto nas laterais. */
+    padding: 20px 48px; /* Define o espaço interno, entre o conteúdo e a borda: 20px em cima e embaixo e 48px nas laterais. */
+    display: grid; /* Organiza os filhos em uma grade de linhas e colunas. */
+    grid-template-columns: 120px 1fr 120px minmax(280px, 340px); /* Define as colunas da grade: 120px 1fr 120px minmax(280px, 340px); fr divide o espaço livre e minmax(...) limita o tamanho de cada coluna. */
+    align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+    gap: 24px; /* Define o espaço entre os itens: 24px. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & .footer__col {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 13px;
-    font-weight: 600;
+  & .footer__col { /* Seleciona as colunas de links do rodapé; & representa o seletor do bloco externo. */
+    display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+    flex-direction: column; /* Organiza os itens flexíveis em uma coluna, de cima para baixo. */
+    gap: 10px; /* Define o espaço entre os itens: 10px. */
+    font-size: 13px; /* Define o tamanho das letras como 13px. */
+    font-weight: 600; /* Define o peso da fonte como 600; valores maiores deixam as letras mais grossas. */
 
-    & a:hover {
-      color: #d7fff2;
-    }
-  }
+    & a:hover { /* Aplica estas regras enquanto o ponteiro está sobre os links do bloco atual. */
+      color: #d7fff2; /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+    } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & .footer__logo {
-    width: min(265px, 100%);
-    height: 130px;
-    object-fit: contain;
-    justify-self: center;
-  }
-  }
+  & .footer__logo { /* Seleciona o logotipo do rodapé; & representa o seletor do bloco externo. */
+    width: min(265px, 100%); /* Define a largura como min(265px, 100%). min(...) escolhe o menor valor entre as opções. */
+    height: 130px; /* Define a altura como 130px. */
+    object-fit: contain; /* Encaixa a imagem inteira na área disponível, preservando sua proporção. */
+    justify-self: center; /* Centraliza este item horizontalmente dentro de sua célula do grid. */
+  } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & .newsletter {
-  & .newsletter__title {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 900;
-  }
+  & .newsletter { /* Seleciona o formulário de novidades; & representa o seletor do bloco externo. */
+  & .newsletter__title { /* Seleciona o título da newsletter; & representa o seletor do bloco externo. */
+    margin: 0; /* Define o espaço externo: 0 em todos os lados. */
+    font-size: 14px; /* Define o tamanho das letras como 14px. */
+    font-weight: 900; /* Define o peso da fonte como 900; valores maiores deixam as letras mais grossas. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & .newsletter__copy {
-    margin: 8px 0 12px;
-    font-size: 11px;
-    font-weight: 500;
-  }
+  & .newsletter__copy { /* Seleciona a descrição da newsletter; & representa o seletor do bloco externo. */
+    margin: 8px 0 12px; /* Define o espaço externo: 8px em cima, 0 nas laterais e 12px embaixo. */
+    font-size: 11px; /* Define o tamanho das letras como 11px. */
+    font-weight: 500; /* Define o peso da fonte como 500; valores maiores deixam as letras mais grossas. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & .newsletter__row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  & .newsletter__row { /* Seleciona a linha do campo de e-mail e do botão Assinar; & representa o seletor do bloco externo. */
+    display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+    align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+    gap: 8px; /* Define o espaço entre os itens: 8px. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & input {
-    width: 236px;
-    height: 37px;
-    padding: 0 13px;
-    border: 1px solid #22b78a;
-    border-radius: 16px;
-    background: #073740;
-    color: #fff;
-    font-size: 11px;
+  & input { /* Seleciona os campos de entrada do bloco atual; & representa o seletor do bloco externo. */
+    width: 236px; /* Define a largura como 236px. */
+    height: 37px; /* Define a altura como 37px. */
+    padding: 0 13px; /* Define o espaço interno, entre o conteúdo e a borda: 0 em cima e embaixo e 13px nas laterais. */
+    border: 1px solid #22b78a; /* Define a borda, indicando espessura, estilo e cor. */
+    border-radius: 16px; /* Arredonda os cantos com um raio de 16px. */
+    background: #073740; /* Define a cor de fundo do elemento. */
+    color: #fff; /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+    font-size: 11px; /* Define o tamanho das letras como 11px. */
 
-    &::placeholder {
-      color: #fff;
-      text-decoration: underline;
-    }
-  }
+    &::placeholder { /* Seleciona o texto de exemplo mostrado enquanto o campo está vazio. */
+      color: #fff; /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+      text-decoration: underline; /* Sublinha o texto de exemplo do campo. */
+    } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & button {
-    width: 66px;
-    height: 37px;
-    border: 1px solid var(--accent);
-    border-radius: 8px;
-    background: #21eeaf;
-    color: #000;
-    font-size: 11px;
-    font-weight: 500;
-    cursor: pointer;
-  }
+  & button { /* Seleciona os botões do bloco atual; & representa o seletor do bloco externo. */
+    width: 66px; /* Define a largura como 66px. */
+    height: 37px; /* Define a altura como 37px. */
+    border: 1px solid var(--accent); /* Define a borda, indicando espessura, estilo e cor. */
+    border-radius: 8px; /* Arredonda os cantos com um raio de 8px. */
+    background: #21eeaf; /* Define a cor de fundo do elemento. */
+    color: #000; /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+    font-size: 11px; /* Define o tamanho das letras como 11px. */
+    font-weight: 500; /* Define o peso da fonte como 500; valores maiores deixam as letras mais grossas. */
+    cursor: pointer; /* Mostra o cursor de mão para indicar que o elemento pode ser clicado. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & .newsletter__msg {
-    margin: 8px 0 0;
-    font-size: 11px;
-  }
-  }
+  & .newsletter__msg { /* Seleciona a mensagem da newsletter; & representa o seletor do bloco externo. */
+    margin: 8px 0 0; /* Define o espaço externo: 8px em cima, 0 nas laterais e 0 embaixo. */
+    font-size: 11px; /* Define o tamanho das letras como 11px. */
+  } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
   /* Modal de login. */
-  & > .modal {
-  padding: 0;
-  border: 0;
-  background: transparent;
+  & > .modal { /* Seleciona a janela de login; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+  padding: 0; /* Define o espaço interno, entre o conteúdo e a borda: 0 em todos os lados. */
+  border: 0; /* Remove a borda do elemento. */
+  background: transparent; /* Deixa o fundo transparente. */
 
-  &::backdrop {
-    background: rgb(0 0 0 / 65%);
-  }
+  &::backdrop { /* Seleciona a camada que cobre o restante da tela quando a janela de login está aberta. */
+    background: rgb(0 0 0 / 65%); /* Define a cor de fundo do elemento. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & .modal__card {
-    width: min(360px, 92vw);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 24px;
-    border: 2px solid var(--accent);
-    border-radius: 12px;
-    background: #062d39;
-    color: #fff;
+  & .modal__card { /* Seleciona o formulário da janela de login; & representa o seletor do bloco externo. */
+    width: min(360px, 92vw); /* Define a largura como min(360px, 92vw). min(...) escolhe o menor valor entre as opções. vw é uma porcentagem da largura da janela. */
+    display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+    flex-direction: column; /* Organiza os itens flexíveis em uma coluna, de cima para baixo. */
+    gap: 12px; /* Define o espaço entre os itens: 12px. */
+    padding: 24px; /* Define o espaço interno, entre o conteúdo e a borda: 24px em todos os lados. */
+    border: 2px solid var(--accent); /* Define a borda, indicando espessura, estilo e cor. */
+    border-radius: 12px; /* Arredonda os cantos com um raio de 12px. */
+    background: #062d39; /* Define a cor de fundo do elemento. */
+    color: #fff; /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
 
-    & h2 {
-      margin: 0 0 8px;
-      font-size: 22px;
-    }
+    & h2 { /* Seleciona o título h2 do bloco atual; & representa o seletor do bloco externo. */
+      margin: 0 0 8px; /* Define o espaço externo: 0 em cima, 0 nas laterais e 8px embaixo. */
+      font-size: 22px; /* Define o tamanho das letras como 22px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & label {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 12px;
-    }
+    & label { /* Seleciona os rótulos dos campos do bloco atual; & representa o seletor do bloco externo. */
+      display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+      flex-direction: column; /* Organiza os itens flexíveis em uma coluna, de cima para baixo. */
+      gap: 6px; /* Define o espaço entre os itens: 6px. */
+      font-size: 12px; /* Define o tamanho das letras como 12px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & input {
-      height: 40px;
-      padding: 0 12px;
-      border: 1px solid var(--input-border);
-      border-radius: 10px;
-      background: #050714;
-      color: #fff;
-    }
-  }
+    & input { /* Seleciona os campos de entrada do bloco atual; & representa o seletor do bloco externo. */
+      height: 40px; /* Define a altura como 40px. */
+      padding: 0 12px; /* Define o espaço interno, entre o conteúdo e a borda: 0 em cima e embaixo e 12px nas laterais. */
+      border: 1px solid var(--input-border); /* Define a borda, indicando espessura, estilo e cor. */
+      border-radius: 10px; /* Arredonda os cantos com um raio de 10px. */
+      background: #050714; /* Define a cor de fundo do elemento. */
+      color: #fff; /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+    } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
-  & .modal__actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
-    padding: 0;
+  & .modal__actions { /* Seleciona a área dos botões da janela de login; & representa o seletor do bloco externo. */
+    display: flex; /* Organiza os filhos com Flexbox, permitindo alinhá-los e distribuir espaço entre eles. */
+    gap: 8px; /* Define o espaço entre os itens: 8px. */
+    margin-top: 8px; /* Define 8px de espaço externo acima do elemento. */
+    padding: 0; /* Define o espaço interno, entre o conteúdo e a borda: 0 em todos os lados. */
 
-    & button {
-      flex: 1;
-      height: 40px;
-      border-radius: 8px;
-      cursor: pointer;
+    & button { /* Seleciona os botões do bloco atual; & representa o seletor do bloco externo. */
+      flex: 1; /* Permite que o item cresça e encolha para dividir o espaço disponível. */
+      height: 40px; /* Define a altura como 40px. */
+      border-radius: 8px; /* Arredonda os cantos com um raio de 8px. */
+      cursor: pointer; /* Mostra o cursor de mão para indicar que o elemento pode ser clicado. */
 
-      &[type="submit"] {
-        border: 0;
-        background: #21eeaf;
-        color: #000;
-        font-weight: 600;
-      }
+      &[type="submit"] { /* Seleciona o botão atual quando seu tipo é submit, usado para enviar o formulário. */
+        border: 0; /* Remove a borda do elemento. */
+        background: #21eeaf; /* Define a cor de fundo do elemento. */
+        color: #000; /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+        font-weight: 600; /* Define o peso da fonte como 600; valores maiores deixam as letras mais grossas. */
+      } /* Fecha este bloco de regras CSS. */
 
-      &[type="button"] {
-        border: 1px solid var(--accent);
-        background: transparent;
-        color: #fff;
-      }
-    }
-  }
-  }
+      &[type="button"] { /* Seleciona o botão atual quando seu tipo é button, sem envio automático do formulário. */
+        border: 1px solid var(--accent); /* Define a borda, indicando espessura, estilo e cor. */
+        background: transparent; /* Deixa o fundo transparente. */
+        color: #fff; /* Define a cor do texto; var(...) usa uma variável de cor, quando presente. */
+      } /* Fecha este bloco de regras CSS. */
+    } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
   /* Ajustes responsivos também continuam dentro do escopo da main. */
-  @media (max-width: 1100px) {
-    & > .header {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto auto;
-    grid-template-areas:
-      "brand search theme login"
-      "nav nav nav nav";
-    align-items: center;
-    height: auto;
-    min-height: 132px;
-    gap: 12px 16px;
-    padding: 12px 20px 10px;
-    overflow: visible;
-    z-index: 10;
+  @media (max-width: 1100px) { /* Aplica os ajustes deste bloco somente quando a janela tem até 1100px de largura. */
+    & > .header { /* Seleciona o cabeçalho; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+    display: grid; /* Organiza os filhos em uma grade de linhas e colunas. */
+    grid-template-columns: auto minmax(0, 1fr) auto auto; /* Define as colunas da grade: auto minmax(0, 1fr) auto auto; fr divide o espaço livre e minmax(...) limita o tamanho de cada coluna. */
+    grid-template-areas: /* Começa a definir, nas próximas linhas, os nomes e as posições das áreas do grid. */
+      "brand search theme login" /* Define uma linha do grid; cada nome indica a área de um elemento e nomes repetidos ocupam várias colunas. */
+      "nav nav nav nav"; /* Define uma linha do grid; cada nome indica a área de um elemento e nomes repetidos ocupam várias colunas. */
+    align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+    height: auto; /* Define a altura como auto. */
+    min-height: 132px; /* Define a altura mínima como 132px. */
+    gap: 12px 16px; /* Define o espaço entre os itens: 12px entre linhas e 16px entre colunas. */
+    padding: 12px 20px 10px; /* Define o espaço interno, entre o conteúdo e a borda: 12px em cima, 20px nas laterais e 10px embaixo. */
+    overflow: visible; /* Permite que o conteúdo ultrapasse os limites do elemento. */
+    z-index: 10; /* Define a ordem de sobreposição nesta pilha como 10; valores maiores ficam à frente. */
 
-    & .brand {
-      grid-area: brand;
-      width: 72px;
-      height: 72px;
-    }
+    & .brand { /* Seleciona o link do logotipo; & representa o seletor do bloco externo. */
+      grid-area: brand; /* Coloca o elemento na área chamada brand, definida em grid-template-areas. */
+      width: 72px; /* Define a largura como 72px. */
+      height: 72px; /* Define a altura como 72px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & .search {
-      grid-area: search;
-      width: 100%;
-      min-width: 0;
-    }
+    & .search { /* Seleciona a área de busca; & representa o seletor do bloco externo. */
+      grid-area: search; /* Coloca o elemento na área chamada search, definida em grid-template-areas. */
+      width: 100%; /* Define a largura como 100%. */
+      min-width: 0; /* Define a largura mínima como 0. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & .theme {
-      grid-area: theme;
-      width: 44px;
-      height: 44px;
-    }
+    & .theme { /* Seleciona o botão de tema; & representa o seletor do bloco externo. */
+      grid-area: theme; /* Coloca o elemento na área chamada theme, definida em grid-template-areas. */
+      width: 44px; /* Define a largura como 44px. */
+      height: 44px; /* Define a altura como 44px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & .login {
-      grid-area: login;
-      min-width: 76px;
-      height: 44px;
-    }
+    & .login { /* Seleciona o botão Entrar; & representa o seletor do bloco externo. */
+      grid-area: login; /* Coloca o elemento na área chamada login, definida em grid-template-areas. */
+      min-width: 76px; /* Define a largura mínima como 76px. */
+      height: 44px; /* Define a altura como 44px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & .nav {
-      grid-area: nav;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      align-items: center;
-      width: 100%;
-      min-width: 0;
-      gap: 4px;
-      overflow: visible;
+    & .nav { /* Seleciona a navegação principal; & representa o seletor do bloco externo. */
+      grid-area: nav; /* Coloca o elemento na área chamada nav, definida em grid-template-areas. */
+      display: grid; /* Organiza os filhos em uma grade de linhas e colunas. */
+      grid-template-columns: repeat(4, minmax(0, 1fr)); /* Define as colunas da grade: repeat(4, minmax(0, 1fr)); fr divide o espaço livre e minmax(...) limita o tamanho de cada coluna. */
+      align-items: center; /* Alinha os itens ao centro no eixo transversal do contêiner. */
+      width: 100%; /* Define a largura como 100%. */
+      min-width: 0; /* Define a largura mínima como 0. */
+      gap: 4px; /* Define o espaço entre os itens: 4px. */
+      overflow: visible; /* Permite que o conteúdo ultrapasse os limites do elemento. */
 
-      & .nav__link {
-        justify-content: center;
-        width: 100%;
-        min-width: 0;
-        min-height: 44px;
-        padding: 6px 4px;
-        font-size: 14px;
+      & .nav__link { /* Seleciona os itens da navegação; & representa o seletor do bloco externo. */
+        justify-content: center; /* Centraliza os itens no eixo principal do contêiner. */
+        width: 100%; /* Define a largura como 100%. */
+        min-width: 0; /* Define a largura mínima como 0. */
+        min-height: 44px; /* Define a altura mínima como 44px. */
+        padding: 6px 4px; /* Define o espaço interno, entre o conteúdo e a borda: 6px em cima e embaixo e 4px nas laterais. */
+        font-size: 14px; /* Define o tamanho das letras como 14px. */
 
-        & img {
-          width: 22px;
-          height: 22px;
-        }
-      }
+        & img { /* Seleciona as imagens do bloco atual; & representa o seletor do bloco externo. */
+          width: 22px; /* Define a largura como 22px. */
+          height: 22px; /* Define a altura como 22px. */
+        } /* Fecha este bloco de regras CSS. */
+      } /* Fecha este bloco de regras CSS. */
 
-      & .category-dropdown {
-        min-width: 0;
-        z-index: 20;
+      & .category-dropdown { /* Seleciona o contêiner do menu de categorias; & representa o seletor do bloco externo. */
+        min-width: 0; /* Define a largura mínima como 0. */
+        z-index: 20; /* Define a ordem de sobreposição nesta pilha como 20; valores maiores ficam à frente. */
 
-        & .category-menu {
-          top: calc(100% + 6px);
-          left: 50%;
-          transform: translateX(-50%);
-          width: 220px;
-        }
-      }
-    }
+        & .category-menu { /* Seleciona o menu de categorias; & representa o seletor do bloco externo. */
+          top: calc(100% + 6px); /* Define a distância a partir do topo da referência de posicionamento: calc(100% + 6px). */
+          left: 50%; /* Define a posição horizontal a partir da esquerda: 50%. */
+          transform: translateX(-50%); /* Desloca o elemento horizontalmente em metade da própria largura, para centralizar o menu. */
+          width: 220px; /* Define a largura como 220px. */
+        } /* Fecha este bloco de regras CSS. */
+      } /* Fecha este bloco de regras CSS. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .hero {
-      min-height: 620px;
-    }
+    } /* Fecha os ajustes do cabeçalho antes de estilizar as seções seguintes. */
 
-    & > .hero .covers {
-      width: 100%;
-    }
+    & > .hero { /* Seleciona a área de jogos; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      min-height: 620px; /* Define a altura mínima como 620px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .footer .newsletter__row {
-      flex-wrap: wrap;
-    }
+    & > .hero .covers { /* Seleciona a faixa de cards; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      width: 100%; /* Define a largura como 100%. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .footer .newsletter input {
-      flex: 1 1 180px;
-      width: auto;
-      min-width: 0;
-    }
+    & > .footer .newsletter__row { /* Seleciona a linha do campo de e-mail e do botão Assinar; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      flex-wrap: wrap; /* Permite que os itens flexíveis passem para outra linha quando faltar espaço. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .footer .footer__inner {
-      grid-template-columns: 1fr 1fr;
-      padding: 24px 20px;
-    }
+    & > .footer .newsletter input { /* Seleciona os campos de entrada dentro do formulário de novidades; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      flex: 1 1 180px; /* Permite crescer e encolher, usando 180px como tamanho inicial no eixo principal. */
+      width: auto; /* Define a largura como auto. */
+      min-width: 0; /* Define a largura mínima como 0. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .footer .footer__logo {
-      grid-column: 1 / -1;
-    }
-  }
+    & > .footer .footer__inner { /* Seleciona o conteúdo interno do rodapé; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      grid-template-columns: 1fr 1fr; /* Define as colunas da grade: 1fr 1fr; fr divide o espaço livre e minmax(...) limita o tamanho de cada coluna. */
+      padding: 24px 20px; /* Define o espaço interno, entre o conteúdo e a borda: 24px em cima e embaixo e 20px nas laterais. */
+    } /* Fecha este bloco de regras CSS. */
 
-  @media (max-width: 700px) {
-    & > .header {
-      grid-template-columns: minmax(0, 1fr) auto auto;
-      grid-template-areas:
-        "brand theme login"
-        "search search search"
-        "nav nav nav";
-      gap: 10px;
-      min-height: 0;
-      padding: 10px 12px 12px;
-    }
+    & > .footer .footer__logo { /* Seleciona o logotipo do rodapé; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      grid-column: 1 / -1; /* Faz o elemento ocupar todas as colunas, da primeira linha à última do grid. */
+    } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
 
-    & > .header .brand {
-      width: 60px;
-      height: 60px;
-    }
+  @media (max-width: 700px) { /* Aplica os ajustes deste bloco somente quando a janela tem até 700px de largura. */
+    & > .header { /* Seleciona o cabeçalho; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      grid-template-columns: minmax(0, 1fr) auto auto; /* Define as colunas da grade: minmax(0, 1fr) auto auto; fr divide o espaço livre e minmax(...) limita o tamanho de cada coluna. */
+      grid-template-areas: /* Começa a definir, nas próximas linhas, os nomes e as posições das áreas do grid. */
+        "brand theme login" /* Define uma linha do grid; cada nome indica a área de um elemento e nomes repetidos ocupam várias colunas. */
+        "search search search" /* Define uma linha do grid; cada nome indica a área de um elemento e nomes repetidos ocupam várias colunas. */
+        "nav nav nav"; /* Define uma linha do grid; cada nome indica a área de um elemento e nomes repetidos ocupam várias colunas. */
+      gap: 10px; /* Define o espaço entre os itens: 10px. */
+      min-height: 0; /* Define a altura mínima como 0. */
+      padding: 10px 12px 12px; /* Define o espaço interno, entre o conteúdo e a borda: 10px em cima, 12px nas laterais e 12px embaixo. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .header .theme {
-      width: 44px;
-      height: 44px;
-      margin-left: auto;
-    }
+    & > .header .brand { /* Seleciona o link do logotipo; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      width: 60px; /* Define a largura como 60px. */
+      height: 60px; /* Define a altura como 60px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .header .login {
-      width: 44px;
-      min-width: 44px;
-      height: 44px;
-      padding: 5px 8px;
-    }
+    & > .header .theme { /* Seleciona o botão de tema; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      width: 44px; /* Define a largura como 44px. */
+      height: 44px; /* Define a altura como 44px. */
+      margin-left: auto; /* Usa o espaço livre à esquerda para empurrar este item para a direita. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .header .login img {
-      width: 26px;
-      height: 26px;
-    }
+    & > .header .login { /* Seleciona o botão Entrar; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      width: 44px; /* Define a largura como 44px. */
+      min-width: 44px; /* Define a largura mínima como 44px. */
+      height: 44px; /* Define a altura como 44px. */
+      padding: 5px 8px; /* Define o espaço interno, entre o conteúdo e a borda: 5px em cima e embaixo e 8px nas laterais. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .header .login {
-      font-size: 0;
-    }
+    & > .header .login img { /* Seleciona as imagens dentro do botão Entrar; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      width: 26px; /* Define a largura como 26px. */
+      height: 26px; /* Define a altura como 26px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .header .nav {
-      gap: 2px;
-      overflow: visible;
-    }
+    & > .header .login { /* Seleciona o botão Entrar; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      font-size: 0; /* Zera o tamanho do texto para ocultar Entrar no botão compacto e deixar o ícone visível. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .header .nav .nav__link {
-      flex-direction: column;
-      gap: 2px;
-      min-height: 52px;
-      padding: 5px 2px;
-      font-size: 11px;
+    & > .header .nav { /* Seleciona a navegação principal; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      gap: 2px; /* Define o espaço entre os itens: 2px. */
+      overflow: visible; /* Permite que o conteúdo ultrapasse os limites do elemento. */
+    } /* Fecha este bloco de regras CSS. */
 
-      & img {
-        width: 21px;
-        height: 21px;
-      }
-    }
+    & > .header .nav .nav__link { /* Seleciona os itens da navegação; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      flex-direction: column; /* Organiza os itens flexíveis em uma coluna, de cima para baixo. */
+      gap: 2px; /* Define o espaço entre os itens: 2px. */
+      min-height: 52px; /* Define a altura mínima como 52px. */
+      padding: 5px 2px; /* Define o espaço interno, entre o conteúdo e a borda: 5px em cima e embaixo e 2px nas laterais. */
+      font-size: 11px; /* Define o tamanho das letras como 11px. */
 
-    & > .header .nav .category-dropdown {
-      z-index: 20;
+      & img { /* Seleciona as imagens do bloco atual; & representa o seletor do bloco externo. */
+        width: 21px; /* Define a largura como 21px. */
+        height: 21px; /* Define a altura como 21px. */
+      } /* Fecha este bloco de regras CSS. */
+    } /* Fecha este bloco de regras CSS. */
 
-      & .category-menu {
-        top: calc(100% + 6px);
-        left: 50%;
-        width: min(220px, calc(100vw - 24px));
-        transform: translateX(-50%);
-      }
-    }
+    & > .header .nav .category-dropdown { /* Seleciona o contêiner do menu de categorias; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      z-index: 20; /* Define a ordem de sobreposição nesta pilha como 20; valores maiores ficam à frente. */
 
-    & > .header .search {
-      width: 100%;
-      min-width: 0;
-      flex-basis: 100%;
-      height: 44px;
-    }
+      & .category-menu { /* Seleciona o menu de categorias; & representa o seletor do bloco externo. */
+        top: calc(100% + 6px); /* Define a distância a partir do topo da referência de posicionamento: calc(100% + 6px). */
+        left: 50%; /* Define a posição horizontal a partir da esquerda: 50%. */
+        width: min(220px, calc(100vw - 24px)); /* Define a largura como min(220px, calc(100vw - 24px)). min(...) escolhe o menor valor entre as opções. calc(...) calcula a medida a partir da expressão. vw é uma porcentagem da largura da janela. */
+        transform: translateX(-50%); /* Desloca o elemento horizontalmente em metade da própria largura, para centralizar o menu. */
+      } /* Fecha este bloco de regras CSS. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .hero {
-      min-height: 520px;
-    }
+    & > .header .search { /* Seleciona a área de busca; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      width: 100%; /* Define a largura como 100%. */
+      min-width: 0; /* Define a largura mínima como 0. */
+      flex-basis: 100%; /* Define o tamanho inicial do item no eixo principal do Flexbox: 100%. */
+      height: 44px; /* Define a altura como 44px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .hero .covers {
-      justify-content: flex-start;
-      padding: 20px 12px 32px;
-    }
+    & > .hero { /* Seleciona a área de jogos; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      min-height: 520px; /* Define a altura mínima como 520px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .hero .covers.is-category-view {
-      justify-content: flex-start;
-    }
+    & > .hero .covers { /* Seleciona a faixa de cards; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      justify-content: flex-start; /* Alinha os itens ao início do eixo principal. */
+      padding: 20px 12px 32px; /* Define o espaço interno, entre o conteúdo e a borda: 20px em cima, 12px nas laterais e 32px embaixo. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .hero .covers .card {
-      flex-basis: min(270px, calc(100vw - 40px));
-      height: 390px;
-    }
+    & > .hero .covers.is-category-view { /* Seleciona a faixa de cards; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. A classe is-category-view restringe a regra à visualização de categorias. */
+      justify-content: flex-start; /* Alinha os itens ao início do eixo principal. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .hero .covers .card .card__title {
-      font-size: 20px;
-    }
+    & > .hero .covers .card { /* Seleciona cada card de jogo; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      flex-basis: min(270px, calc(100vw - 40px)); /* Define o tamanho inicial do item no eixo principal do Flexbox: min(270px, calc(100vw - 40px)). */
+      height: 390px; /* Define a altura como 390px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .hero .covers .card .card__favorite {
-      min-height: 36px;
-      padding: 6px 8px;
-    }
+    & > .hero .covers .card .card__title { /* Seleciona o título do jogo; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      font-size: 20px; /* Define o tamanho das letras como 20px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .footer .footer__inner {
-      grid-template-columns: 1fr;
-      gap: 20px;
-      padding: 24px 16px;
-    }
+    & > .hero .covers .card .card__favorite { /* Seleciona o botão de favoritos; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      min-height: 36px; /* Define a altura mínima como 36px. */
+      padding: 6px 8px; /* Define o espaço interno, entre o conteúdo e a borda: 6px em cima e embaixo e 8px nas laterais. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .footer .footer__logo {
-      width: min(220px, 100%);
-      height: 100px;
-    }
+    & > .footer .footer__inner { /* Seleciona o conteúdo interno do rodapé; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      grid-template-columns: 1fr; /* Define as colunas da grade: 1fr; fr divide o espaço livre e minmax(...) limita o tamanho de cada coluna. */
+      gap: 20px; /* Define o espaço entre os itens: 20px. */
+      padding: 24px 16px; /* Define o espaço interno, entre o conteúdo e a borda: 24px em cima e embaixo e 16px nas laterais. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .footer .newsletter input {
-      flex-basis: 100%;
-      height: 42px;
-    }
+    & > .footer .footer__logo { /* Seleciona o logotipo do rodapé; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      width: min(220px, 100%); /* Define a largura como min(220px, 100%). min(...) escolhe o menor valor entre as opções. */
+      height: 100px; /* Define a altura como 100px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .footer .newsletter button {
-      width: 100%;
-      height: 42px;
-    }
+    & > .footer .newsletter input { /* Seleciona os campos de entrada dentro do formulário de novidades; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      flex-basis: 100%; /* Define o tamanho inicial do item no eixo principal do Flexbox: 100%. */
+      height: 42px; /* Define a altura como 42px. */
+    } /* Fecha este bloco de regras CSS. */
 
-    & > .modal .modal__card {
-      width: calc(100vw - 24px);
-      max-height: calc(100vh - 24px);
-      overflow-y: auto;
-      padding: 20px;
-    }
-  }
-}
+    & > .footer .newsletter button { /* Seleciona os botões dentro do formulário de novidades; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      width: 100%; /* Define a largura como 100%. */
+      height: 42px; /* Define a altura como 42px. */
+    } /* Fecha este bloco de regras CSS. */
+
+    & > .modal .modal__card { /* Seleciona o formulário da janela de login; & representa o seletor do bloco externo. O sinal > exige que o próximo elemento seja filho direto. */
+      width: calc(100vw - 24px); /* Define a largura como calc(100vw - 24px). calc(...) calcula a medida a partir da expressão. vw é uma porcentagem da largura da janela. */
+      max-height: calc(100vh - 24px); /* Define a altura máxima como calc(100vh - 24px). calc(...) calcula a medida a partir da expressão. vh é uma porcentagem da altura da janela. */
+      overflow-y: auto; /* Cria rolagem vertical quando o conteúdo ultrapassa a altura disponível. */
+      padding: 20px; /* Define o espaço interno, entre o conteúdo e a borda: 20px em todos os lados. */
+    } /* Fecha este bloco de regras CSS. */
+  } /* Fecha este bloco de regras CSS. */
+} /* Fecha este bloco de regras CSS. */

@@ -1,107 +1,143 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KKB Hub — Game Labs</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!DOCTYPE html> <!-- Informa ao navegador que este documento usa HTML moderno. -->
+<html lang="pt-BR"> <!-- Abre o documento e define português do Brasil como idioma do conteúdo. -->
+  <head> <!-- Abre a área de configurações e recursos do documento. -->
+    <meta charset="UTF-8" /> <!-- Define UTF-8 para que acentos e outros caracteres sejam interpretados corretamente. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Ajusta a largura da página à tela do dispositivo e define a escala inicial. -->
+    <title>KKB Hub — Game Labs</title> <!-- Define o título mostrado na aba do navegador. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" /> <!-- Antecipa a conexão com o servidor que fornece a folha de estilos das fontes. -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> <!-- Antecipa a conexão com o servidor dos arquivos de fonte, usando crossorigin para essa conexão. -->
+    <!-- Explicação de cada linha da tag abaixo; os comentários ficam fora da tag para manter o HTML válido.
+      <link : Inicia o elemento link que carregará as fontes externas.
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Poppins:wght@500&display=swap" : Solicita as fontes Inter e Poppins, com os pesos indicados; display=swap permite mostrar uma fonte alternativa durante o carregamento.
+      rel="stylesheet" : Identifica o recurso vinculado como uma folha de estilos.
+      /> : Encerra a abertura deste elemento vazio, que não tem conteúdo interno nem tag de fechamento.
+    -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Poppins:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <main class="page" id="inicio">
+    <link rel="stylesheet" href="css/styles.css" /> <!-- Carrega o arquivo CSS que define as cores, as medidas e o layout do site. -->
+    <link rel="stylesheet" href="css/enhancements.css" /> <!-- Carrega o acabamento visual e as animações depois dos estilos básicos. -->
+  </head> <!-- Fecha a área de configurações do documento. -->
+  <body> <!-- Abre o corpo que contém os elementos da página. -->
+    <main class="page" id="inicio"> <!-- Abre o conteúdo principal; page recebe os estilos e inicio é o destino dos links para o topo. -->
       <!-- Cabeçalho com navegação, busca, tema e login. -->
-      <header class="header">
-        <a class="brand" href="#inicio" aria-label="KKB Hub">
-          <img src="assets/logo-header.png" alt="KKB Hub — browser games" />
-        </a>
+      <header class="header"> <!-- Abre o cabeçalho com logotipo, navegação, busca e botões. -->
+        <a class="brand" href="#inicio" aria-label="KKB Hub"> <!-- Cria o link do logotipo para o início e fornece um nome acessível. -->
+          <img src="assets/logo-header.png" alt="KKB Hub — browser games" /> <!-- Mostra o logotipo do cabeçalho e informa sua descrição alternativa. -->
+        </a> <!-- Fecha o link. -->
 
-        <nav class="nav" aria-label="Principal">
-          <a class="nav__link is-active" href="#inicio" data-page="inicio">
-            <img src="assets/icon-home.png" alt="" width="25" height="25" />
-            inicio
-          </a>
-          <a class="nav__link" href="#explorar" data-page="explorar">
-            <img src="assets/icon-explore.svg" alt="" width="25" height="25" />
+        <nav class="nav" aria-label="Principal"> <!-- Abre a navegação principal e a identifica para tecnologias assistivas. -->
+          <a class="nav__link is-active" href="#inicio" data-page="inicio"> <!-- Cria o item Início; is-active marca o destaque inicial e data-page identifica a seção para o JavaScript. -->
+            <img src="assets/icon-home.png" alt="" width="25" height="25" /> <!-- Mostra o ícone de início; alt vazio o marca como decorativo e width/height definem seu tamanho. -->
+            <!-- Exibe o texto do item Início. -->
+
+            <button type="button"> home</button>
+            Início
+          </a> <!-- Fecha o link. -->
+          <a class="nav__link" href="#explorar" data-page="explorar"> <!-- Cria o link Explorar e identifica essa seção para o JavaScript. -->
+            <img src="assets/icon-explore.svg" alt="" width="25" height="25" /> <!-- Mostra o ícone de explorar; alt vazio o marca como decorativo e width/height definem seu tamanho. -->
+            <!-- Exibe o texto do item Explorar. -->
             Explorar
-          </a>
-          <div class="category-dropdown">
-            <button class="nav__link" type="button" data-page="categorias" aria-expanded="false" aria-controls="category-menu">
-              <img src="assets/icon-categories.png" alt="" width="25" height="25" />
+          </a> <!-- Fecha o link. -->
+          <div class="category-dropdown"> <!-- Agrupa o botão Categorias e o menu suspenso que ele controla. -->
+            <button class="nav__link" type="button" data-page="categorias" aria-expanded="false" aria-controls="category-menu"> <!-- Cria o botão de categorias, informa que o menu começa fechado e aponta para o ID do menu controlado. -->
+              <img src="assets/icon-categories.png" alt="" width="25" height="25" /> <!-- Mostra o ícone de categorias; alt vazio o marca como decorativo e width/height definem seu tamanho. -->
+              <!-- Exibe o texto do botão Categorias. -->
               Categorias
-            </button>
-            <nav class="category-menu" id="category-menu" aria-label="Filtrar por categoria" hidden>
-              <strong>Escolha uma categoria</strong>
-              <div class="category-menu__links">
-                <a href="#categorias" data-category="">Todas</a>
-                <a href="#categorias" data-category="acao">Ação</a>
-                <a href="#categorias" data-category="esporte">Esporte</a>
-                <a href="#categorias" data-category="fps">FPS</a>
-                <a href="#categorias" data-category="corrida">Corrida</a>
-              </div>
-            </nav>
-          </div>
-          <a class="nav__link" href="#favoritos" data-page="favoritos">
-            <img src="assets/icon-favorites.png" alt="" width="25" height="25" />
+            </button> <!-- Fecha o botão. -->
+            <nav class="category-menu" id="category-menu" aria-label="Filtrar por categoria" hidden> <!-- Cria o menu de filtros, identificado pelo JavaScript, e o mantém oculto inicialmente. -->
+              <strong>Escolha uma categoria</strong> <!-- Exibe a orientação do menu com destaque semântico. -->
+              <div class="category-menu__links"> <!-- Agrupa os links que escolhem a categoria dos jogos. -->
+                <a href="#categorias" data-category="">Todas</a> <!-- Cria a opção Todas; data-category vazio remove a restrição de categoria. -->
+                <a href="#categorias" data-category="acao">Ação</a> <!-- Cria o filtro Ação; data-category fornece o valor acao para o JavaScript. -->
+                <a href="#categorias" data-category="esporte">Esporte</a> <!-- Cria o filtro Esporte; data-category fornece o valor esporte para o JavaScript. -->
+                <a href="#categorias" data-category="fps">FPS</a> <!-- Cria o filtro FPS; data-category fornece o valor fps para o JavaScript. -->
+                <a href="#categorias" data-category="corrida">Corrida</a> <!-- Cria o filtro Corrida; data-category fornece o valor corrida para o JavaScript. -->
+              </div> <!-- Fecha o contêiner de agrupamento. -->
+            </nav> <!-- Fecha este grupo de navegação. -->
+          </div> <!-- Fecha o contêiner de agrupamento. -->
+          <a class="nav__link" href="#favoritos" data-page="favoritos"> <!-- Cria o link da seção Favoritos, identificada pelo atributo data-page. -->
+            <img src="assets/icon-favorites.png" alt="" width="25" height="25" /> <!-- Mostra o ícone de favoritos; alt vazio o marca como decorativo e width/height definem seu tamanho. -->
+            <!-- Exibe o texto do item Favoritos. -->
             Favoritos
-          </a>
-        </nav>
+          </a> <!-- Fecha o link. -->
+        </nav> <!-- Fecha este grupo de navegação. -->
 
-        <label class="search">
-          <img src="assets/icon-search.svg" alt="" width="20" height="20" />
+        <label class="search"> <!-- Agrupa o ícone e o campo de busca dentro de um rótulo clicável. -->
+          <img src="assets/icon-search.svg" alt="" width="20" height="20" /> <!-- Mostra o ícone de busca; alt vazio o marca como decorativo e width/height definem seu tamanho. -->
+          <!-- Explicação de cada linha da tag abaixo; os comentários ficam fora da tag para manter o HTML válido.
+            <input : Inicia um campo de entrada; os atributos das linhas seguintes configuram seu comportamento.
+            id="search" : Identifica o campo de busca para o JavaScript.
+            type="search" : Define o campo como entrada de texto para pesquisa.
+            placeholder="Buscar jogos" : Mostra Buscar jogos como dica enquanto o campo está vazio.
+            autocomplete="off" : Solicita ao navegador que não sugira valores salvos para este campo.
+            /> : Encerra a abertura deste elemento vazio, que não tem conteúdo interno nem tag de fechamento.
+          -->
           <input
             id="search"
+            aria-label="Buscar jogos"
             type="search"
             placeholder="Buscar jogos"
             autocomplete="off"
           />
-        </label>
+        </label> <!-- Fecha o rótulo e o grupo do campo. -->
 
-        <button class="theme" type="button" id="theme-toggle" aria-label="Alternar tema">
-          <img src="assets/icon-theme.png" alt="" width="25" height="25" />
-        </button>
+        <button class="theme" type="button" id="theme-toggle" aria-label="Alternar tema"> <!-- Cria o botão de tema; o ID permite encontrá-lo no JavaScript e aria-label fornece seu nome acessível. -->
+          <img src="assets/icon-theme.png" alt="" width="25" height="25" /> <!-- Mostra o ícone de tema; alt vazio o marca como decorativo e width/height definem seu tamanho. -->
+        </button> <!-- Fecha o botão. -->
 
-        <button class="login" type="button" id="login-btn">
-          <img src="assets/icon-profile.png" alt="" width="30" height="30" />
+        <button class="login" type="button" id="login-btn"> <!-- Cria o botão que abre a janela de login, localizado pelo JavaScript por seu ID. -->
+          <img src="assets/icon-profile.png" alt="" width="30" height="30" /> <!-- Mostra o ícone de perfil; alt vazio o marca como decorativo e width/height definem seu tamanho. -->
+          <!-- Exibe o texto do botão de login. -->
           Entrar
-        </button>
-      </header>
+        </button> <!-- Fecha o botão. -->
+      </header> <!-- Fecha o cabeçalho. -->
 
       <!-- Os cards são criados pelo JavaScript. -->
-      <section class="hero" aria-label="Jogos em destaque">
-        <p class="hero__status" id="status" hidden></p>
-        <section class="covers" id="covers" aria-label="Jogos em destaque"></section>
-        <p class="empty" id="empty" hidden>Nenhum jogo encontrado.</p>
-      </section>
+      <section class="hero" aria-label="Jogos em destaque"> <!-- Abre a área principal de jogos com uma descrição acessível. -->
+<!-- autoplay inicia sozinho; muted tira o som; loop repete; playsinline reproduz dentro da página no celular. -->
+<video class="hero__video" autoplay muted loop playsinline aria-hidden="true">
+  <source src="videos/background.mp4" type="video/mp4" /> <!-- Indica o arquivo e seu formato. -->
+</video> <!-- Fecha o elemento de vídeo. -->
+        <p class="hero__status" id="status" hidden></p> <!-- Reserva uma mensagem inicialmente oculta, usada para informar quando falta o endereço de um jogo. -->
+        <section class="covers" id="covers" aria-label="Jogos em destaque"></section> <!-- Cria o contêiner vazio que o JavaScript preencherá com os cards dos jogos. -->
+        <p class="empty" id="empty" hidden>Nenhum jogo encontrado.</p> <!-- Prepara a mensagem que será mostrada quando os filtros não encontrarem jogos. -->
+      </section> <!-- Fecha esta seção de conteúdo. -->
 
       <!-- Links úteis e inscrição na newsletter. -->
-      <footer class="footer">
-        <section class="footer__inner" aria-label="Informações do site">
-          <nav class="footer__col" aria-label="Páginas">
-            <a href="#inicio">Início</a>
-            <a href="#explorar">Explorar</a>
-            <a href="#categorias">Categorias</a>
-            <a href="#favoritos">Favoritos</a>
-          </nav>
+      <footer class="footer"> <!-- Abre o rodapé da página. -->
+        <section class="footer__inner" aria-label="Informações do site"> <!-- Agrupa e identifica o conteúdo interno do rodapé. -->
+          <nav class="footer__col" aria-label="Páginas"> <!-- Abre a coluna do rodapé com links para as seções da página. -->
+            <a href="#inicio">Início</a> <!-- Cria um link de rodapé para o fragmento #inicio; ele não tem data-page nem o ouvinte da navegação principal. -->
+            <a href="#explorar">Explorar</a> <!-- Cria um link de rodapé para o fragmento #explorar; ele não tem data-page nem o ouvinte da navegação principal. -->
+            <a href="#categorias">Categorias</a> <!-- Cria um link de rodapé para o fragmento #categorias; ele não tem data-page nem o ouvinte da navegação principal. -->
+            <a href="#favoritos">Favoritos</a> <!-- Cria um link de rodapé para o fragmento #favoritos; ele não tem data-page nem o ouvinte da navegação principal. -->
+          </nav> <!-- Fecha este grupo de navegação. -->
 
-          <img class="footer__logo" src="assets/logo-footer.png" alt="KKB Hub Browser Games" />
+          <img class="footer__logo" src="assets/logo-footer.png" alt="KKB Hub Browser Games" /> <!-- Mostra o logotipo do rodapé com uma descrição alternativa. -->
 
-          <nav class="footer__col" aria-label="Categorias">
-            <a href="#categorias" data-category="">Todas</a>
-            <a href="#categorias" data-category="acao">Ação</a>
-            <a href="#categorias" data-category="esporte">Esporte</a>
-            <a href="#categorias" data-category="fps">FPS</a>
-            <a href="#categorias" data-category="corrida">Corrida</a>
-          </nav>
+          <nav class="footer__col" aria-label="Categorias"> <!-- Abre a coluna de categorias do rodapé. -->
+            <a href="#categorias" data-category="">Todas</a> <!-- Cria a opção Todas; data-category vazio remove a restrição de categoria. -->
+            <a href="#categorias" data-category="acao">Ação</a> <!-- Cria o filtro Ação; data-category fornece o valor acao para o JavaScript. -->
+            <a href="#categorias" data-category="esporte">Esporte</a> <!-- Cria o filtro Esporte; data-category fornece o valor esporte para o JavaScript. -->
+            <a href="#categorias" data-category="fps">FPS</a> <!-- Cria o filtro FPS; data-category fornece o valor fps para o JavaScript. -->
+            <a href="#categorias" data-category="corrida">Corrida</a> <!-- Cria o filtro Corrida; data-category fornece o valor corrida para o JavaScript. -->
+          </nav> <!-- Fecha este grupo de navegação. -->
 
-          <form class="newsletter" id="newsletter">
-            <p class="newsletter__title">Fique por dentro</p>
-            <p class="newsletter__copy">Receba novidades e lançamentos de jogos.</p>
-            <section class="newsletter__row" aria-label="Inscrição na newsletter">
+          <form class="newsletter" id="newsletter"> <!-- Abre o formulário de novidades que o JavaScript encontra pelo ID newsletter. -->
+            <p class="newsletter__title">Fique por dentro</p> <!-- Exibe o título do formulário de novidades. -->
+            <p class="newsletter__copy">Receba novidades e lançamentos de jogos.</p> <!-- Exibe o texto que explica a proposta da newsletter. -->
+            <section class="newsletter__row" aria-label="Inscrição na newsletter"> <!-- Agrupa o campo de e-mail e o botão de inscrição. -->
+              <!-- Explicação de cada linha da tag abaixo; os comentários ficam fora da tag para manter o HTML válido.
+                <input : Inicia um campo de entrada; os atributos das linhas seguintes configuram seu comportamento.
+                type="email" : Define uma entrada com validação de formato de e-mail.
+                name="email" : Dá ao campo o nome email, usado pelo FormData no JavaScript.
+                placeholder="Seu@gmail.com" : Mostra um exemplo de e-mail enquanto o campo está vazio.
+                required : Exige o preenchimento deste campo antes de enviar o formulário.
+                autocomplete="email" : Permite que o navegador sugira um e-mail salvo para este campo.
+                /> : Encerra a abertura deste elemento vazio, que não tem conteúdo interno nem tag de fechamento.
+              -->
               <input
                 type="email"
                 name="email"
@@ -109,32 +145,34 @@
                 required
                 autocomplete="email"
               />
-              <button type="submit">ASSINAR</button>
-            </section>
-            <p class="newsletter__msg" id="newsletter-msg" hidden></p>
-          </form>
-        </section>
-      </footer>
+              <button type="submit">ASSINAR</button> <!-- Cria o botão que envia o formulário da newsletter. -->
+            </section> <!-- Fecha esta seção de conteúdo. -->
+            <p class="newsletter__msg" id="newsletter-msg" hidden></p> <!-- Reserva a mensagem de confirmação da newsletter, escondida até o envio. -->
+          </form> <!-- Fecha o formulário. -->
+        </section> <!-- Fecha esta seção de conteúdo. -->
+      </footer> <!-- Fecha o rodapé. -->
     <!-- Modal simples de login. -->
-    <dialog class="modal" id="login-modal">
-      <form method="dialog" class="modal__card" id="login-form">
-        <h2>Entrar</h2>
-        <label>
+    <dialog class="modal" id="login-modal"> <!-- Cria a janela nativa de diálogo usada pelo login; o JavaScript controla sua abertura e seu fechamento. -->
+      <form method="dialog" class="modal__card" id="login-form"> <!-- Abre o formulário do diálogo; method=dialog permitiria fechá-lo no envio, mas o JavaScript intercepta esse envio. -->
+        <h2>Entrar</h2> <!-- Exibe o título da janela de login. -->
+        <label> <!-- Abre um rótulo que envolve e identifica o campo de entrada seguinte. -->
+          <!-- Exibe o rótulo do campo de e-mail. -->
           Email
-          <input type="email" name="email" required placeholder="Seu@gmail.com" />
-        </label>
-        <label>
+          <input type="email" name="email" required placeholder="Seu@gmail.com" /> <!-- Cria um campo obrigatório com validação de formato de e-mail, nome email e texto de exemplo. -->
+        </label> <!-- Fecha o rótulo e o grupo do campo. -->
+        <label> <!-- Abre um rótulo que envolve e identifica o campo de entrada seguinte. -->
+          <!-- Exibe o rótulo do campo de senha. -->
           Senha
-          <input type="password" name="password" required minlength="4" placeholder="••••••••" />
-        </label>
-        <menu class="modal__actions">
-          <button type="submit" value="login">Entrar</button>
-          <button type="button" id="login-cancel" value="cancel">Cancelar</button>
-        </menu>
-      </form>
-    </dialog>
-    </main>
+          <input type="password" name="password" required minlength="4" placeholder="••••••••" /> <!-- Cria o campo obrigatório de senha, com caracteres ocultos e tamanho mínimo de quatro caracteres. -->
+        </label> <!-- Fecha o rótulo e o grupo do campo. -->
+        <menu class="modal__actions"> <!-- Agrupa os botões de ação da janela de login. -->
+          <button type="submit" value="login">Entrar</button> <!-- Cria o botão que envia o formulário de login e tem o valor login. -->
+          <button type="button" id="login-cancel" value="cancel">Cancelar</button> <!-- Cria o botão Cancelar sem envio do formulário; o JavaScript usa seu ID para fechar a janela. -->
+        </menu> <!-- Fecha o grupo de ações do diálogo. -->
+      </form> <!-- Fecha o formulário. -->
+    </dialog> <!-- Fecha a estrutura da janela de login. -->
+    </main> <!-- Fecha o conteúdo principal da página. -->
 
-    <script src="js/main.js"></script>
-  </body>
-</html>
+    <script src="js/main.js"></script> <!-- Carrega e executa o JavaScript depois da criação dos elementos da página. -->
+  </body> <!-- Fecha o corpo do documento. -->
+</html> <!-- Fecha o documento HTML. -->

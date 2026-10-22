@@ -1,0 +1,441 @@
+/* Acabamento visual: este arquivo complementa styles.css sem misturar as melhorias com a base. */
+main.page { /* Centraliza as cores e os tempos usados pelas melhorias. */
+  --bg: #060c16; /* Define um fundo azul bem escuro. */
+  --text: #eef6fb; /* Usa um branco suave nos textos principais. */
+  --muted: #97a9bb; /* Reserva uma cor mais discreta para textos de apoio. */
+  --accent: #36e8b3; /* Mantém o verde como cor de destaque do projeto. */
+  --accent-soft: #7bf4ce; /* Clareia os pequenos textos de destaque. */
+  --surface: rgb(9 20 33 / 94%); /* Define o fundo dos painéis e do cabeçalho. */
+  --surface-soft: rgb(255 255 255 / 4%); /* Dá um fundo discreto aos controles. */
+  --surface-solid: #101f2e; /* Dá um fundo opaco aos menus e à janela de login. */
+  --card: rgb(10 26 38 / 94%); /* Mantém os cards legíveis sobre o vídeo. */
+  --line: rgb(166 204 218 / 14%); /* Suaviza as bordas dos controles. */
+  --card-line: rgb(71 217 179 / 32%); /* Dá aos cards uma borda verde mais delicada. */
+  --hero-overlay: linear-gradient(180deg, rgb(6 12 22 / 62%), rgb(6 12 22 / 12%) 45%, rgb(6 12 22 / 80%)); /* Controla o contraste sobre o vídeo. */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1); /* Faz os movimentos desacelerarem suavemente. */
+  color-scheme: dark; /* Ajusta os controles nativos ao tema escuro. */
+  -webkit-font-smoothing: antialiased; /* Suaviza o desenho das letras nos navegadores compatíveis. */
+} /* Fecha as variáveis do tema escuro. */
+main.page[data-theme="light"] { /* Ajusta os mesmos componentes para o tema claro. */
+  --bg: #edf3f7; /* Clareia o fundo da página. */
+  --text: #132b3b; /* Escurece o texto para manter a leitura. */
+  --muted: #526c7b; /* Define o texto secundário do tema claro. */
+  --accent: #087c60; /* Usa um verde com contraste sobre fundos claros. */
+  --accent-soft: #087c60; /* Mantém os textos verdes legíveis. */
+  --surface: rgb(246 250 252 / 96%); /* Clareia os painéis. */
+  --surface-soft: rgb(15 67 81 / 5%); /* Define o fundo suave dos controles claros. */
+  --surface-solid: #f6fafc; /* Clareia os menus e o formulário de login. */
+  --card: rgb(244 251 252 / 96%); /* Clareia os cards sem perder a leitura das capas. */
+  --line: rgb(14 73 90 / 17%); /* Ajusta a cor das bordas. */
+  --card-line: rgb(8 124 96 / 30%); /* Ajusta a borda verde dos cards. */
+  --hero-overlay: linear-gradient(180deg, rgb(237 243 247 / 72%), rgb(237 243 247 / 28%) 45%, rgb(237 243 247 / 88%)); /* Integra o vídeo ao tema claro. */
+  color-scheme: light; /* Ajusta os controles nativos ao tema claro. */
+} /* Fecha as variáveis do tema claro. */
+main.page [hidden] { display: none !important; } /* Garante que mensagens e menus ocultos continuem fora da tela. */
+main.page :is(button, a, input) { -webkit-tap-highlight-color: transparent; } /* Evita o realce padrão ao tocar nos controles. */
+main.page :is(button, a, input):focus-visible { /* Destaca o elemento usado pela navegação por teclado. */
+  outline: 2px solid var(--accent); /* Desenha uma borda de foco visível. */
+  outline-offset: 4px; /* Afasta essa borda do conteúdo. */
+} /* Fecha o estilo de foco. */
+main.page > .header { /* Refina o cabeçalho mantendo seus elementos atuais. */
+  height: 88px; /* Deixa o cabeçalho mais compacto. */
+  padding: 0 clamp(20px, 3vw, 48px); /* Ajusta o espaço lateral à largura da tela. */
+  gap: 20px; /* Separa os grupos de controles. */
+  background: var(--surface); /* Usa o fundo do tema atual. */
+  border-bottom: 1px solid var(--line); /* Troca a linha forte por uma borda discreta. */
+  box-shadow: 0 12px 32px rgb(0 0 0 / 12%); /* Separa o cabeçalho do vídeo. */
+  backdrop-filter: blur(18px); /* Desfoca o que estiver atrás do cabeçalho. */
+  z-index: 20; /* Mantém o menu de categorias acima da área de jogos. */
+} /* Fecha o acabamento do cabeçalho. */
+main.page .header .brand { width: 88px; height: 80px; } /* Preserva o logotipo com proporções próximas das originais. */
+main.page .header .brand img { filter: brightness(1.6); transition: filter 240ms ease; } /* Melhora a leitura do logotipo e suaviza a mudança de brilho. */
+main.page .header .brand:hover img { filter: brightness(1.85); } /* Ilumina o logotipo ao passar o mouse. */
+main.page[data-theme="light"] .header .brand img { filter: none; } /* Preserva as cores originais do logotipo sobre o cabeçalho claro. */
+main.page .header .nav { gap: 5px; } /* Aproxima os itens para acomodar melhor a busca. */
+main.page .header .nav .nav__link { /* Dá a cada item uma área de clique confortável. */
+  position: relative; /* Serve de referência para o indicador inferior. */
+  min-height: 42px; /* Mantém uma altura consistente nos itens. */
+  padding: 9px 12px; /* Cria espaço ao redor do ícone e do texto. */
+  gap: 8px; /* Separa o ícone do texto. */
+  border: 1px solid transparent; /* Reserva espaço para a borda sem deslocar o layout. */
+  border-radius: 11px; /* Arredonda os itens da navegação. */
+  background: transparent; /* Deixa aparecer o fundo do cabeçalho. */
+  color: var(--muted); /* Reduz o destaque dos itens inativos. */
+  font-size: 14px; /* Equilibra o tamanho da navegação com os outros controles. */
+  font-weight: 500; /* Mantém o texto bem definido sem exagerar no peso. */
+  opacity: 1; /* Evita reduzir o contraste do texto inteiro. */
+  transition: background 220ms ease, color 220ms ease, border-color 220ms ease; /* Suaviza as mudanças de estado. */
+} /* Fecha o estilo básico dos itens. */
+main.page .header .nav .nav__link::after { /* Cria o pequeno indicador do item ativo. */
+  content: ""; /* Habilita o pseudo-elemento decorativo. */
+  position: absolute; /* Posiciona a linha dentro do item. */
+  inset: auto 14px 0; /* Alinha a linha à parte inferior com margens laterais. */
+  height: 2px; /* Define a espessura do indicador. */
+  background: var(--accent); /* Usa a cor verde do tema. */
+  border-radius: 2px; /* Arredonda as extremidades. */
+  transform: scaleX(0); /* Começa com o indicador recolhido. */
+  transition: transform 280ms var(--ease); /* Anima a abertura do indicador. */
+} /* Fecha o indicador. */
+main.page .header .nav .nav__link:is(:hover, .is-active) { /* Destaca o item ativo ou sob o ponteiro. */
+  color: var(--accent-soft); /* Ilumina o texto. */
+  background: var(--surface-soft); /* Acrescenta um fundo discreto. */
+  border-color: var(--line); /* Mostra o contorno do item. */
+} /* Fecha o destaque do item. */
+main.page .header .nav .nav__link.is-active::after { transform: scaleX(1); } /* Abre a linha do item selecionado. */
+main.page .header .nav .nav__link img { width: 19px; height: 19px; } /* Harmoniza o tamanho dos ícones. */
+main.page .header .search { /* Refina o campo de busca. */
+  width: clamp(190px, 21vw, 290px); /* Faz a busca acompanhar a largura da tela. */
+  height: 44px; /* Alinha a altura da busca à dos botões. */
+  min-width: 0; /* Permite reduzir o campo em telas menores. */
+  background: var(--surface-soft); /* Separa o campo do fundo. */
+  border-color: var(--line); /* Suaviza a borda padrão. */
+  border-radius: 12px; /* Arredonda o campo. */
+  transition: border-color 220ms ease, box-shadow 220ms ease; /* Suaviza o realce de foco. */
+} /* Fecha o campo de busca. */
+main.page .header .search:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgb(54 232 179 / 10%); } /* Realça o grupo enquanto o campo recebe foco. */
+main.page .header .search input { width: 100%; min-width: 0; font-size: 13px; } /* Impede que o campo ultrapasse o contêiner. */
+main.page .header .theme { /* Refina o botão de tema. */
+  width: 44px; height: 44px; /* Usa uma área quadrada confortável para clicar. */
+  flex-shrink: 0; /* Evita que o botão seja espremido. */
+  background: var(--surface-soft); /* Aplica o fundo dos controles. */
+  border-color: var(--line); /* Usa uma borda sutil. */
+  border-radius: 12px; /* Acompanha os cantos da busca. */
+  transition: transform 240ms var(--ease), border-color 220ms ease; /* Suaviza a resposta ao ponteiro. */
+} /* Fecha o botão de tema. */
+main.page .header .theme:hover { transform: rotate(-8deg); border-color: var(--accent); } /* Inclina levemente o botão ao passar o mouse. */
+main.page .header .theme img { width: 22px; height: 22px; } /* Centraliza um ícone um pouco menor. */
+main.page .header .login { /* Refina o botão de login. */
+  width: auto; min-width: 92px; height: 44px; /* Acomoda o texto sem perder uma altura uniforme. */
+  padding: 8px 12px; gap: 7px; /* Dá espaço ao ícone e ao nome. */
+  border: 1px solid rgb(118 255 210 / 28%); /* Acrescenta um contorno delicado. */
+  border-radius: 12px; /* Arredonda o botão. */
+  background: linear-gradient(135deg, #6af5c9, #29d7b2); /* Cria o destaque verde do botão principal. */
+  color: #062b25; font-size: 12px; font-weight: 700; /* Mantém o texto escuro e legível sobre o verde. */
+  box-shadow: 0 5px 20px rgb(34 211 159 / 12%); /* Adiciona um brilho contido. */
+  transition: transform 220ms var(--ease), box-shadow 220ms ease; /* Suaviza elevação e sombra. */
+} /* Fecha o botão de login. */
+main.page .header .login:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgb(34 211 159 / 24%); } /* Eleva o botão ao passar o mouse. */
+main.page .header .login img { width: 24px; height: 24px; filter: brightness(0.18); } /* Ajusta o tamanho e o contraste do ícone. */
+main.page .header .nav .category-dropdown .category-menu { /* Melhora o acabamento do menu suspenso. */
+  top: calc(100% + 12px); /* Separa o menu do botão. */
+  padding: 10px; width: 224px; /* Mantém os links confortáveis. */
+  background: var(--surface-solid); /* Impede que o vídeo dificulte a leitura. */
+  border: 1px solid var(--card-line); /* Usa um contorno verde suave. */
+  border-radius: 16px; /* Arredonda o painel. */
+  box-shadow: 0 18px 48px rgb(0 0 0 / 30%); /* Separa o menu do restante da página. */
+  animation: kkb-fade-in 180ms ease; /* Faz o menu aparecer suavemente. */
+} /* Fecha o painel do menu. */
+main.page .header .category-menu strong { font-size: 11px; letter-spacing: 0.04em; } /* Refina o título do menu. */
+main.page .header .category-menu .category-menu__links a { padding: 11px 12px; border-radius: 9px; transition: background 180ms ease, color 180ms ease; } /* Suaviza a passagem entre categorias. */
+main.page[data-theme="light"] :is(.nav__link img, .search > img, .theme img) { filter: brightness(0.25); } /* Torna os ícones claros legíveis no tema claro. */
+main.page > .hero { /* Refina a área de jogos sem mudar o carrossel existente. */
+  min-height: clamp(560px, 76svh, 780px); /* Equilibra a altura do destaque com a janela. */
+  padding: 30px 0; /* Reserva espaço para a elevação dos cards. */
+} /* Fecha as medidas da área de jogos. */
+main.page > .hero .hero__video { z-index: -2; filter: saturate(1.08); } /* Mantém o vídeo atrás da camada de contraste. */
+main.page > .hero::before { /* Cria uma camada de contraste sobre o vídeo. */
+  content: ""; /* Habilita a camada decorativa. */
+  position: absolute; inset: 0; /* Faz a camada cobrir somente a área de jogos. */
+  background: var(--hero-overlay); /* Usa o degradê correspondente ao tema atual. */
+  z-index: -1; /* Mantém a camada acima do vídeo e abaixo dos cards. */
+  pointer-events: none; /* Permite clicar normalmente nos jogos. */
+} /* Fecha a camada de contraste. */
+main.page .hero .covers { /* Dá mais espaço entre as capas. */
+  width: min(1440px, 100%); /* Usa a largura disponível sem exagerar em telas grandes. */
+  gap: 18px; /* Separa os cards para destacar cada capa. */
+  padding: 32px 32px 44px; /* Reserva espaço para as sombras e a animação de elevação. */
+  perspective: 1200px; /* Dá profundidade à inclinação sutil dos cards. */
+  mask-image: linear-gradient(90deg, transparent, #000 20px, #000 calc(100% - 20px), transparent); /* Suaviza as bordas laterais da faixa. */
+} /* Fecha o acabamento da faixa. */
+main.page .hero .covers .card { /* Refina o cartão sem alterar seus eventos de clique. */
+  position: relative; /* Serve de referência para detalhes decorativos. */
+  flex: 0 0 252px; height: 400px; /* Equilibra o tamanho das capas e a quantidade de cards visíveis. */
+  gap: 12px; padding: 12px; /* Organiza os espaços internos. */
+  border: 1px solid var(--card-line); border-radius: 18px; /* Troca o contorno forte por uma borda mais fina. */
+  background: var(--card); /* Usa uma superfície legível sobre o vídeo. */
+  box-shadow: 0 18px 36px -16px rgb(0 0 0 / 72%), inset 0 1px 0 rgb(255 255 255 / 5%); /* Cria profundidade com uma sombra discreta. */
+  backdrop-filter: blur(12px); /* Desfoca o vídeo que aparece através do fundo do card. */
+  transition: transform 320ms var(--ease), border-color 240ms ease, box-shadow 240ms ease; /* Anima a elevação e o brilho do contorno. */
+} /* Fecha o estilo básico do card. */
+main.page .hero .covers .card.is-entering { animation: kkb-card-in 560ms var(--ease) var(--card-delay, 0ms) backwards; } /* Faz cada card entrar com um pequeno atraso apenas na primeira montagem. */
+main.page .hero .covers .card:is(:hover, :focus-visible) { /* Destaca o card apontado ou acessado por teclado. */
+  transform: translateY(-10px) rotateX(2deg) scale(1.025); /* Eleva o card com uma leve sensação de profundidade. */
+  border-color: var(--accent); /* Ilumina seu contorno. */
+  box-shadow: 0 24px 44px -16px rgb(0 0 0 / 76%), 0 0 22px rgb(54 232 179 / 13%); /* Reforça a profundidade sem ofuscar a capa. */
+  z-index: 1; /* Coloca o card destacado à frente dos vizinhos. */
+} /* Fecha o destaque do card. */
+main.page .hero .covers .card .card__art { /* Simplifica a moldura da capa. */
+  width: 100%; min-height: 0; /* Preenche o espaço disponível sem forçar a altura do card. */
+  border: 0; border-radius: 11px; /* Remove a linha tracejada e arredonda a imagem. */
+  background: rgb(0 0 0 / 12%); /* Dá um fundo neutro enquanto a imagem carrega. */
+} /* Fecha a moldura da capa. */
+main.page .hero .covers .card .card__art img, /* Seleciona as capas comuns. */
+main.page .hero .covers .card[data-id="cs"] .card__art img { /* Uniformiza também o recorte especial da capa de CS. */
+  width: 100%; height: 100%; /* Faz a imagem preencher a moldura inteira. */
+  object-fit: cover; border-radius: 0; /* Preserva a proporção, com recorte e cantos definidos pela moldura. */
+  transition: transform 500ms var(--ease), filter 300ms ease; /* Suaviza o zoom e a luminosidade da capa. */
+} /* Fecha o ajuste das imagens. */
+main.page .hero .covers .card:is(:hover, :focus-visible) .card__art img { transform: scale(1.055); filter: brightness(1.06); } /* Aproxima levemente a imagem do card destacado. */
+main.page .hero .covers .card .card__title, /* Seleciona os títulos comuns. */
+main.page .hero .covers .card[data-id="cs"] .card__title, /* Inclui o título de CS, que tem um tamanho especial na base. */
+main.page .hero .covers .card[data-id="pes"] .card__title { /* Mantém os títulos dos jogos com a mesma hierarquia. */
+  width: 100%; margin: 0; /* Alinha o título à largura da capa. */
+  color: var(--text); font-size: 18px; font-weight: 700; /* Define um título legível nos dois temas. */
+  letter-spacing: -0.025em; line-height: 1.3; text-align: left; /* Refina o espaçamento e alinha o texto à esquerda. */
+} /* Fecha o acabamento dos títulos. */
+main.page .hero .covers .card .card__actions { min-height: 34px; gap: 8px; } /* Alinha a categoria e o botão de favoritos. */
+main.page .hero .covers .card .card__badge { /* Aproveita o selo existente para mostrar a categoria do jogo. */
+  visibility: visible; width: auto; height: auto; /* Exibe o selo sem reservar uma largura fixa. */
+  padding: 5px 7px; border-radius: 6px; /* Dá espaço ao texto e suaviza os cantos. */
+  border: 1px solid var(--card-line); background: var(--surface-soft); /* Cria uma etiqueta discreta. */
+  color: var(--accent-soft); font-size: 9px; letter-spacing: 0.09em; /* Mantém a categoria secundária ao título. */
+} /* Fecha o selo de categoria. */
+main.page .hero .covers .card .card__favorite { /* Refina o botão de favoritos. */
+  min-height: 34px; padding: 7px 10px; /* Amplia a área de clique. */
+  border: 1px solid var(--line); border-radius: 9px; /* Mantém um contorno discreto. */
+  background: var(--surface-soft); color: var(--text); /* Usa as cores do tema atual. */
+  font-size: 10px; font-weight: 600; /* Mantém o texto compacto e legível. */
+  transition: background 200ms ease, border-color 200ms ease, transform 200ms var(--ease); /* Suaviza a resposta do botão. */
+} /* Fecha o botão de favoritos. */
+main.page .hero .covers .card .card__favorite:is(:hover, :focus-visible) { border-color: var(--accent); background: rgb(54 232 179 / 12%); } /* Realça o botão usado pelo mouse ou teclado. */
+main.page .hero .covers .card .card__favorite[aria-pressed="true"] { color: var(--accent-soft); border-color: var(--card-line); background: rgb(54 232 179 / 12%); } /* Diferencia os jogos já favoritados. */
+main.page .hero .hero__status, /* Seleciona a mensagem de estado acima dos jogos. */
+main.page .hero .empty { /* Refina as mensagens acima e abaixo dos jogos. */
+  max-width: calc(100% - 40px); padding: 12px 18px; /* Mantém as mensagens dentro da tela. */
+  border: 1px solid var(--line); border-radius: 12px; /* Aplica o mesmo acabamento dos controles. */
+  background: var(--surface); color: var(--text); /* Mantém o texto legível sobre o vídeo. */
+  font-size: 12px; line-height: 1.6; text-align: center; /* Facilita a leitura em telas menores. */
+  animation: kkb-fade-in 220ms ease; /* Suaviza a aparição da mensagem. */
+} /* Fecha o acabamento das mensagens. */
+main.page > .footer { /* Integra o rodapé ao restante do tema. */
+  background: var(--surface); border-top: 1px solid var(--line); /* Substitui o degradê intenso por uma superfície discreta. */
+  box-shadow: 0 -16px 40px rgb(0 0 0 / 8%); /* Separa suavemente o rodapé da área de jogos. */
+} /* Fecha o fundo do rodapé. */
+main.page .footer .footer__inner { padding: 28px 40px; gap: 28px; } /* Equilibra os espaços entre os grupos do rodapé. */
+main.page .footer .footer__logo { width: min(230px, 100%); height: 110px; } /* Reduz o logotipo para valorizar os outros conteúdos. */
+main.page[data-theme="light"] .footer .footer__logo { background: #0a1825; border-radius: 14px; padding: 10px 16px; } /* Dá contraste às letras brancas do logotipo no tema claro. */
+main.page[data-theme="light"] .hero .covers .card { box-shadow: 0 16px 34px -18px rgb(19 57 70 / 28%); } /* Suaviza a sombra dos cards sobre o fundo claro. */
+main.page .footer .footer__col { gap: 12px; color: var(--muted); font-size: 12px; } /* Suaviza os links secundários. */
+main.page .footer .footer__col a { width: fit-content; transition: color 200ms ease, transform 200ms ease; } /* Prepara o realce individual de cada link. */
+main.page .footer .footer__col a:hover { color: var(--accent-soft); transform: translateX(3px); } /* Move o link discretamente ao passar o mouse. */
+main.page .newsletter .newsletter__title { font-size: 15px; font-weight: 700; } /* Destaca o título da newsletter. */
+main.page .newsletter .newsletter__copy { color: var(--muted); line-height: 1.6; } /* Melhora a leitura da descrição. */
+main.page .newsletter input { /* Harmoniza o campo da newsletter com a busca. */
+  min-width: 0; height: 42px; border-radius: 10px; /* Mantém o campo confortável e dentro do seu grupo. */
+  background: var(--surface-soft); border-color: var(--line); color: var(--text); /* Aplica o tema atual. */
+  transition: border-color 200ms ease, box-shadow 200ms ease; /* Suaviza o foco do campo. */
+} /* Fecha o campo da newsletter. */
+main.page .newsletter input::placeholder { color: var(--muted); text-decoration: none; } /* Usa uma dica discreta sem sublinhado. */
+main.page .newsletter input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgb(54 232 179 / 10%); } /* Realça o campo durante a digitação. */
+main.page .newsletter button { height: 42px; width: 84px; border: 0; border-radius: 10px; background: #42eabd; color: #062b25; font-weight: 700; transition: transform 220ms var(--ease), filter 200ms ease; } /* Refina o botão de inscrição. */
+main.page .newsletter button:hover { transform: translateY(-2px); filter: brightness(1.08); } /* Eleva e ilumina o botão de inscrição. */
+main.page .newsletter .newsletter__msg { color: var(--accent-soft); line-height: 1.6; animation: kkb-fade-in 200ms ease; } /* Destaca a confirmação do formulário. */
+main.page > .modal { /* Centraliza a janela de login mesmo com o reset de margens da base. */
+  margin: auto; width: min(410px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); /* Mantém o diálogo centralizado e dentro da tela. */
+  border-radius: 20px; overflow: auto; /* Arredonda o painel e permite rolar em telas baixas. */
+  box-shadow: 0 32px 100px rgb(0 0 0 / 45%); /* Dá profundidade à janela. */
+} /* Fecha a caixa do diálogo. */
+main.page > .modal::backdrop { background: rgb(2 8 16 / 72%); backdrop-filter: blur(8px); } /* Escurece e desfoca a página atrás do login. */
+main.page .modal .modal__card { /* Refina o formulário da janela. */
+  width: 100%; padding: 28px; gap: 18px; /* Organiza o espaço entre os campos. */
+  border: 1px solid var(--card-line); border-radius: 20px; /* Aplica o contorno do tema. */
+  background: var(--surface-solid); color: var(--text); /* Mantém a leitura nos dois temas. */
+} /* Fecha o formulário. */
+main.page .modal[open] .modal__card { animation: kkb-panel-in 280ms var(--ease); } /* Anima a entrada da janela quando ela é aberta. */
+main.page .modal .modal__card h2 { margin: 0; font-size: 24px; letter-spacing: -0.04em; } /* Refina o título da janela. */
+main.page .modal .modal__card label { gap: 9px; color: var(--muted); font-size: 12px; } /* Separa os rótulos dos campos. */
+main.page .modal .modal__card input { height: 46px; background: var(--surface-soft); color: var(--text); border-color: var(--line); border-radius: 11px; transition: border-color 200ms ease; } /* Harmoniza os campos do login. */
+main.page .modal .modal__card input:focus { outline: none; border-color: var(--accent); } /* Realça o campo em edição. */
+main.page .modal .modal__actions { gap: 10px; margin-top: 4px; } /* Separa os botões de ação. */
+main.page .modal .modal__actions button { height: 44px; border-radius: 10px; font-size: 12px; transition: transform 200ms var(--ease), filter 200ms ease; } /* Refina os botões da janela. */
+main.page .modal .modal__actions button[type="submit"] { background: #42eabd; color: #062b25; } /* Destaca a ação principal do login. */
+main.page .modal .modal__actions button[type="button"] { border-color: var(--line); color: var(--text); } /* Mantém Cancelar como ação secundária. */
+main.page .modal .modal__actions button:hover { filter: brightness(1.12); } /* Ilumina a ação apontada. */
+main.page :is(.login, .theme, .card__favorite, .newsletter button, .modal__actions button):active { transform: scale(0.96); } /* Dá uma resposta curta de pressão ao clicar. */
+@media (max-width: 1100px) { /* Ajusta o acabamento para tablets e notebooks menores. */
+  main.page > .header { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; grid-template-areas: "brand search theme login" "nav nav nav nav"; height: auto; min-height: 132px; padding: 12px 24px; gap: 10px 16px; } /* Distribui o cabeçalho em duas linhas. */
+  main.page .header .brand { grid-area: brand; width: 74px; height: 64px; } /* Reserva a primeira área para o logotipo. */
+  main.page .header .search { grid-area: search; width: 100%; } /* Faz a busca ocupar o espaço central. */
+  main.page .header .theme { grid-area: theme; } /* Mantém o botão de tema ao lado da busca. */
+  main.page .header .login { grid-area: login; } /* Mantém o botão de login no fim da linha. */
+  main.page .header .nav { grid-area: nav; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; gap: 6px; } /* Divide a navegação em quatro partes iguais. */
+  main.page .header .nav .nav__link { justify-content: center; width: 100%; min-width: 0; font-size: 13px; } /* Centraliza cada item na sua coluna. */
+  main.page .header .nav .category-dropdown .category-menu { left: 50%; transform: translateX(-50%); } /* Centraliza o menu abaixo do botão. */
+  main.page > .hero { min-height: 580px; } /* Mantém espaço para as capas em telas médias. */
+  main.page .footer .footer__inner { grid-template-columns: 1fr 1fr; padding: 28px; gap: 24px; } /* Organiza o rodapé em duas colunas. */
+  main.page .footer .footer__logo { grid-column: 1 / -1; grid-row: 1; } /* Coloca o logotipo no topo do rodapé. */
+  main.page .footer .newsletter { grid-column: 1 / -1; } /* Deixa o formulário usar a largura das duas colunas. */
+  main.page .footer .newsletter__row { flex-wrap: nowrap; } /* Mantém o campo e o botão na mesma linha quando houver espaço. */
+  main.page .footer .newsletter input { flex: 1; width: auto; } /* Faz o campo usar o espaço livre. */
+} /* Fecha os ajustes de telas médias. */
+@media (max-width: 700px) { /* Ajusta o acabamento para celulares. */
+  main.page > .header { grid-template-columns: minmax(0, 1fr) auto auto; grid-template-areas: "brand theme login" "search search search" "nav nav nav"; padding: 10px 14px 12px; gap: 10px; min-height: 0; } /* Organiza o cabeçalho em três linhas compactas. */
+  main.page .header .brand { width: 66px; height: 54px; } /* Reduz o logotipo no celular. */
+  main.page .header .login { width: 44px; min-width: 44px; height: 44px; padding: 8px; font-size: 0; } /* Mostra apenas o ícone de login no botão compacto. */
+  main.page .header .login img { width: 25px; height: 25px; } /* Mantém o ícone de login legível. */
+  main.page .header .search { height: 44px; } /* Preserva a área de toque da busca. */
+  main.page .header .nav { gap: 4px; } /* Aproxima as quatro colunas da navegação. */
+  main.page .header .nav .nav__link { flex-direction: column; min-height: 56px; padding: 7px 3px; gap: 4px; font-size: 10px; border-radius: 10px; } /* Empilha os ícones sobre os textos. */
+  main.page .header .nav .nav__link img { width: 20px; height: 20px; } /* Uniformiza os ícones na navegação móvel. */
+  main.page .header .nav .category-dropdown .category-menu { width: min(224px, calc(100vw - 28px)); } /* Mantém o menu dentro da largura da tela. */
+  main.page > .hero { min-height: 500px; padding: 18px 0; } /* Evita espaço vazio excessivo acima e abaixo das capas. */
+  main.page .hero .covers { padding: 26px 20px 36px; gap: 18px; } /* Mantém espaço para o card se elevar. */
+  main.page .hero .covers.is-category-view { justify-content: flex-start; } /* Mantém os cards acessíveis por rolagem nas categorias. */
+  main.page .hero .covers .card { flex-basis: min(252px, calc(100vw - 64px)); height: 380px; } /* Exibe uma capa principal e uma parte da próxima. */
+  main.page .hero .covers .card .card__favorite { min-height: 38px; } /* Amplia a área de toque dos favoritos. */
+  main.page .footer .footer__inner { grid-template-columns: 1fr 1fr; padding: 24px 22px; gap: 22px; } /* Mantém as duas listas lado a lado. */
+  main.page .footer .footer__logo { width: 190px; height: 90px; } /* Equilibra o logotipo com o rodapé compacto. */
+  main.page .footer .newsletter__row { flex-wrap: wrap; } /* Permite quebrar a linha do formulário. */
+  main.page .footer .newsletter input { flex: 1 1 100%; height: 44px; } /* Faz o campo ocupar uma linha completa. */
+  main.page .footer .newsletter button { width: 100%; height: 44px; } /* Mantém o botão fácil de tocar. */
+  main.page .modal .modal__card { width: 100%; padding: 24px; } /* Ajusta o formulário à largura do diálogo. */
+} /* Fecha os ajustes de celulares. */
+@media (hover: none) { /* Ajusta os efeitos para telas sem ponteiro de mouse. */
+  main.page .hero .covers .card:hover { transform: none; } /* Evita deixar o card elevado após um toque. */
+  main.page .hero .covers .card:hover .card__art img { transform: none; filter: none; } /* Evita manter o zoom da capa após o toque. */
+} /* Fecha os ajustes de toque. */
+@keyframes kkb-card-in { /* Define a entrada inicial dos cards. */
+  from { opacity: 0; transform: translateY(22px) scale(0.97); } /* Começa abaixo da posição final e com transparência. */
+  to { opacity: 1; transform: translateY(0) scale(1); } /* Termina na posição e no tamanho naturais. */
+} /* Fecha a animação dos cards. */
+@keyframes kkb-fade-in { /* Define a aparição suave dos menus e mensagens. */
+  from { opacity: 0; } /* Começa transparente. */
+  to { opacity: 1; } /* Termina totalmente visível. */
+} /* Fecha a animação de transparência. */
+@keyframes kkb-panel-in { /* Define a entrada da janela de login. */
+  from { opacity: 0; transform: translateY(12px) scale(0.98); } /* Começa um pouco abaixo e menor. */
+  to { opacity: 1; transform: translateY(0) scale(1); } /* Retorna à posição e ao tamanho naturais. */
+} /* Fecha a animação do diálogo. */
+@media (prefers-reduced-motion: reduce) { /* Respeita a preferência do sistema por menos animação. */
+  main.page, main.page *, main.page *::before, main.page *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } /* Desativa as animações e transições adicionadas pelo CSS. */
+} /* Fecha o ajuste de movimento reduzido. */
+
+/* Eixo central do carrossel: o destaque acompanha a posição real de cada card. */
+main.page .hero .covers.has-center-focus { /* Aplica o layout quando o controle central está ativo. */
+  position: relative; /* Faz as posições dos cards serem medidas a partir da própria faixa. */
+  justify-content: flex-start; /* Mantém a ordem dos jogos mesmo nas categorias e nos favoritos. */
+  padding: 62px var(--carousel-inset, 24px); /* Reserva espaço para o destaque e permite centralizar o primeiro e o último jogo. */
+  overflow-anchor: none; /* Evita reposicionamentos automáticos que disputem com o card selecionado. */
+} /* Fecha o layout da faixa central. */
+main.page .hero .covers.has-center-focus .card, /* Seleciona o estado normal dos cards. */
+main.page .hero .covers.has-center-focus .card:is(:hover, :focus-visible) { /* Mantém a hierarquia central também ao passar o mouse ou usar o teclado. */
+  transform: none; /* Mantém todos os cards laterais retos e no mesmo tamanho normal. */
+  opacity: 1; filter: none; /* Remove os efeitos graduais que também destacavam os vizinhos. */
+  z-index: 1; /* Mantém os laterais no mesmo plano. */
+  border-color: var(--card-line); /* Mantém o contorno discreto fora do centro. */
+  box-shadow: 0 18px 34px -18px rgb(0 0 0 / 65%); /* Dá profundidade sem disputar com o destaque. */
+  transform-origin: center; /* Faz o card crescer ao redor do próprio centro. */
+  transition: transform 180ms ease-out, opacity 180ms ease-out, filter 180ms ease-out, border-color 220ms ease, box-shadow 220ms ease; /* Suaviza a passagem de um lado para o centro. */
+} /* Fecha os estados laterais. */
+main.page .hero .covers.has-center-focus .card.is-active { /* Destaca somente o card mais próximo do eixo. */
+  transform: translateY(-10px); z-index: 2; /* Eleva o jogo central; o crescimento usa dimensões reais na peça giratória. */
+  border-color: var(--accent); /* Ilumina o contorno do jogo selecionado. */
+  box-shadow: 0 26px 50px -20px rgb(0 0 0 / 85%), 0 0 30px rgb(54 232 179 / 25%), inset 0 0 0 1px rgb(54 232 179 / 16%); /* Cria o brilho principal ao redor do card central. */
+} /* Fecha o destaque central. */
+main.page .hero .covers.has-center-focus .card .card__art img, /* Seleciona todas as capas da faixa central. */
+main.page .hero .covers.has-center-focus .card:is(:hover, :focus-visible) .card__art img { /* Evita que o zoom de um card lateral roube o destaque. */
+  transform: none; filter: none; /* Deixa a escala e a iluminação sob controle do card inteiro. */
+} /* Fecha o ajuste das capas laterais. */
+main.page .hero .covers.has-center-focus .card.is-active:is(:hover, :focus-visible) .card__art img { transform: scale(1.035); } /* Dá um zoom leve apenas na capa central. */
+main.page .hero .covers.has-center-focus .card .card__badge { visibility: hidden; opacity: 0; transition: opacity 180ms ease; } /* Reserva o selo SELECIONADO para o jogo ativo. */
+main.page .hero .covers.has-center-focus .card.is-active .card__badge { visibility: visible; opacity: 1; } /* Mostra claramente qual jogo está no centro. */
+main.page > .hero::after { /* Cria uma iluminação suave atrás do eixo central. */
+  content: ""; position: absolute; /* Habilita uma camada decorativa fora do fluxo da página. */
+  left: 50%; top: 50%; width: min(480px, 90vw); height: 460px; /* Mantém a luz alinhada ao centro da área de jogos. */
+  transform: translate(-50%, -50%); /* Centraliza a camada pela própria largura e altura. */
+  background: radial-gradient(ellipse, rgb(54 232 179 / 15%), transparent 68%); /* Forma uma luz difusa que destaca o card central. */
+  pointer-events: none; z-index: -1; /* Mantém a decoração atrás dos jogos sem bloquear cliques. */
+} /* Fecha a iluminação do centro. */
+main.page[data-theme="light"] .hero .covers.has-center-focus .card.is-active { box-shadow: 0 20px 40px -20px rgb(18 69 71 / 35%), 0 0 26px rgb(8 124 96 / 14%); } /* Ajusta a sombra central para o tema claro. */
+@media (max-width: 700px) { /* Refina o centro fixo em telas menores. */
+  main.page .hero .covers.has-center-focus { padding-block: 46px; } /* Reserva a altura necessária para o card maior sem criar espaço excessivo. */
+} /* Fecha o ajuste do carrossel móvel. */
+
+/* Giro do card central: a peça completa mostra a frente ou o verso. */
+main.page .hero .covers.has-center-focus .card { perspective: 1100px; } /* Dá profundidade à virada sem inclinar os cards laterais. */
+main.page .hero .covers.has-center-focus .card .card__inner { /* Agrupa as duas faces do mesmo card. */
+  position: relative; width: 100%; flex: 1; min-height: 0; /* Faz as faces ocuparem a peça giratória. */
+  transform-style: preserve-3d; /* Mantém a frente e o verso em planos separados durante o giro. */
+  transform: rotateY(0deg); /* Começa exibindo a frente. */
+  transition: transform 680ms cubic-bezier(0.2, 0.75, 0.25, 1); /* Cria uma virada suave com desaceleração no final. */
+} /* Fecha o suporte das duas faces. */
+main.page .hero .covers.has-center-focus .card.is-flipped .card__inner { transform: rotateY(180deg); } /* Gira a peça completa para exibir o verso. */
+main.page .hero .covers.has-center-focus .card .card__front, /* Seleciona a face com a capa do jogo. */
+main.page .hero .covers.has-center-focus .card .card__back { /* Aplica a geometria comum às duas faces. */
+  position: absolute; inset: 0; /* Mantém frente e verso exatamente sobrepostos. */
+  display: flex; flex-direction: column; gap: 12px; /* Preserva a organização vertical do conteúdo. */
+  min-height: 0; border-radius: 11px; /* Mantém as faces dentro da moldura original. */
+  backface-visibility: hidden; /* Esconde a face que estiver de costas para o usuário. */
+  -webkit-backface-visibility: hidden; /* Reforça o comportamento em navegadores que usam a versão prefixada. */
+} /* Fecha as propriedades comuns das faces. */
+main.page .hero .covers.has-center-focus .card .card__front { transform: rotateY(0deg); } /* Mantém a capa orientada para a frente. */
+main.page .hero .covers.has-center-focus .card .card__back { /* Cria o acabamento do verso. */
+  transform: rotateY(180deg); /* Posiciona o verso atrás da frente, sem deixar o texto espelhado. */
+  align-items: center; justify-content: center; padding: 22px 16px; gap: 18px; /* Centraliza os elementos no verso. */
+  border: 1px solid var(--card-line); /* Acrescenta uma moldura discreta ao verso. */
+  background: radial-gradient(circle at 50% 0%, rgb(54 232 179 / 19%), transparent 65%), var(--surface-solid); /* Cria uma iluminação suave sobre o fundo do tema. */
+  color: var(--text); text-align: center; /* Mantém o conteúdo legível nos dois temas. */
+  pointer-events: none; /* Impede cliques no verso enquanto a frente estiver visível. */
+} /* Fecha o acabamento do verso. */
+main.page .hero .covers.has-center-focus .card.is-flipped .card__front { pointer-events: none; } /* Desativa os cliques na frente escondida. */
+main.page .hero .covers.has-center-focus .card.is-flipped .card__back { pointer-events: auto; } /* Libera os controles do verso quando ele aparece. */
+main.page .hero .covers.has-center-focus .card .card__back-logo { width: 168px; max-width: 100%; height: 100px; padding: 10px; border-radius: 13px; background: #081722; object-fit: contain; } /* Usa a marca existente com contraste nos dois temas. */
+main.page .hero .covers.has-center-focus .card .card__back-title { margin: 0; font-size: 21px; line-height: 1.25; letter-spacing: -0.03em; } /* Destaca o nome do jogo no verso. */
+main.page .hero .covers.has-center-focus .card .card__play { /* Mantém uma ação explícita para abrir o jogo. */
+  min-height: 42px; width: 100%; max-width: 176px; padding: 10px 18px; /* Cria uma área de clique confortável. */
+  border: 0; border-radius: 10px; background: #42eabd; color: #062b25; /* Usa o mesmo acabamento das ações principais do site. */
+  font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; /* Mantém o texto e o cursor consistentes. */
+  transition: transform 200ms var(--ease), box-shadow 200ms ease; /* Suaviza a resposta ao ponteiro. */
+} /* Fecha o botão de jogar. */
+main.page .hero .covers.has-center-focus .card .card__play:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgb(54 232 179 / 20%); } /* Destaca o botão sem mover os cards laterais. */
+main.page .hero .covers.has-center-focus .card .card__back-hint { color: var(--muted); font-size: 10px; line-height: 1.5; } /* Explica como voltar à capa sem acrescentar outro botão. */
+
+/* Giro da peça inteira: fundo, borda e sombra pertencem às faces que se movimentam. */
+main.page .hero .covers.has-center-focus .card, /* Seleciona o suporte de todos os cards. */
+main.page .hero .covers.has-center-focus .card:is(:hover, :focus-visible), /* Inclui os estados de mouse e teclado. */
+main.page .hero .covers.has-center-focus .card.is-active, /* Inclui o suporte do card central. */
+main.page[data-theme="light"] .hero .covers.has-center-focus .card.is-active { /* Inclui também o destaque no tema claro. */
+  padding: 0; border: 0; background: transparent; /* Remove a moldura fixa e deixa a peça giratória ocupar toda a área. */
+  box-shadow: none; backdrop-filter: none; /* Evita uma sombra ou um painel parado atrás da virada. */
+} /* Fecha o suporte transparente do carrossel. */
+main.page .hero .covers.has-center-focus .card .card__inner { height: 100%; } /* Faz a peça giratória ocupar toda a altura do card. */
+main.page .hero .covers.has-center-focus .card .card__front, /* Seleciona a moldura da frente. */
+main.page .hero .covers.has-center-focus .card .card__back { /* Seleciona a moldura do verso. */
+  border: 1px solid var(--card-line); border-radius: 18px; /* Coloca a borda e os cantos arredondados nas faces que giram. */
+  box-shadow: 0 18px 34px -18px rgb(0 0 0 / 65%); /* Faz a sombra acompanhar o plano da peça durante a rotação. */
+  transition: border-color 220ms ease, box-shadow 220ms ease; /* Suaviza a troca de destaque entre os jogos. */
+} /* Fecha a moldura comum das duas faces. */
+main.page .hero .covers.has-center-focus .card .card__front { padding: 12px; background: var(--card); } /* Move o fundo e o espaço interno originais para a face da capa. */
+main.page .hero .covers.has-center-focus .card.is-active .card__front, /* Ilumina a frente do card central. */
+main.page .hero .covers.has-center-focus .card.is-active .card__back { /* Ilumina o verso da mesma peça. */
+  border-color: var(--accent); /* Faz o contorno verde virar junto com o card. */
+  box-shadow: 0 26px 50px -20px rgb(0 0 0 / 85%), 0 0 30px rgb(54 232 179 / 25%), inset 0 0 0 1px rgb(54 232 179 / 16%); /* Mantém o brilho ligado à face visível. */
+} /* Fecha o destaque da moldura giratória. */
+main.page[data-theme="light"] .hero .covers.has-center-focus .card .card__front, /* Ajusta a frente no tema claro. */
+main.page[data-theme="light"] .hero .covers.has-center-focus .card .card__back { box-shadow: 0 16px 34px -18px rgb(19 57 70 / 28%); } /* Suaviza as sombras das faces claras. */
+main.page[data-theme="light"] .hero .covers.has-center-focus .card.is-active .card__front, /* Ajusta a frente selecionada no tema claro. */
+main.page[data-theme="light"] .hero .covers.has-center-focus .card.is-active .card__back { box-shadow: 0 20px 40px -20px rgb(18 69 71 / 35%), 0 0 26px rgb(8 124 96 / 14%); } /* Faz o brilho claro acompanhar a peça inteira. */
+
+/* Nitidez do destaque: aumenta o tamanho real da peça em vez de ampliar uma camada pronta. */
+main.page .hero .covers.has-center-focus .card.is-active { transform: translateY(-10px); } /* Mantém a elevação central sem esticar os pixels dos textos. */
+main.page .hero .covers.has-center-focus .card .card__inner { /* Dimensiona a peça que contém a moldura, a capa e os controles. */
+  position: absolute; inset: 0; width: auto; height: auto; /* Usa o suporte fixo como referência sem mudar o passo do carrossel. */
+  transition: transform 680ms cubic-bezier(0.2, 0.75, 0.25, 1), inset 180ms ease-out; /* Preserva a virada e anima o crescimento até o tamanho real. */
+} /* Fecha a geometria da peça giratória. */
+main.page .hero .covers.has-center-focus .card.is-active .card__inner { inset: -20px -13px; } /* Acrescenta espaço igualmente nos quatro lados para preservar o eixo central. */
+main.page .hero .covers.has-center-focus .card.is-active .card__front, /* Seleciona a frente em destaque. */
+main.page .hero .covers.has-center-focus .card.is-active .card__back { border-radius: 20px; gap: 13px; } /* Mantém os cantos e os espaços proporcionais ao card maior. */
+main.page .hero .covers.has-center-focus .card.is-active .card__front { padding: 13px; } /* Mantém a capa afastada da borda do card central. */
+main.page .hero .covers.has-center-focus .card.is-active .card__title { font-size: 20px; } /* Desenha o título já no tamanho de destaque, sem ampliar uma imagem do texto. */
+main.page .hero .covers.has-center-focus .card.is-active .card__actions { min-height: 37px; gap: 9px; } /* Reserva o espaço dos controles no tamanho final. */
+main.page .hero .covers.has-center-focus .card.is-active .card__badge { font-size: 10px; padding: 6px 8px; } /* Desenha o selo SELECIONADO diretamente em uma fonte legível. */
+main.page .hero .covers.has-center-focus .card.is-active .card__favorite { font-size: 11px; min-height: 37px; padding: 8px 11px; border-radius: 10px; } /* Mantém o botão Favoritar nítido e proporcional ao destaque. */
+main.page .hero .covers.has-center-focus .card.is-active .card__back { padding: 24px 18px; gap: 20px; } /* Preserva o espaço entre os elementos do verso ampliado. */
+main.page .hero .covers.has-center-focus .card.is-active .card__back-logo { width: 185px; height: 110px; padding: 11px; border-radius: 14px; } /* Mantém a marca proporcional ao verso maior. */
+main.page .hero .covers.has-center-focus .card.is-active .card__back-title { font-size: 23px; } /* Desenha o título do verso diretamente no tamanho final. */
+main.page .hero .covers.has-center-focus .card.is-active .card__play { max-width: 194px; min-height: 46px; font-size: 13px; } /* Preserva o destaque do botão Jogar sem escalar seu texto. */
+main.page .hero .covers.has-center-focus .card.is-active .card__back-hint { font-size: 11px; } /* Mantém a orientação de retorno legível no verso. */
+@media (max-width: 700px) { /* Ajusta o crescimento à altura menor dos cards no celular. */
+  main.page .hero .covers.has-center-focus .card.is-active .card__inner { inset-block: -19px; } /* Preserva o crescimento proporcional em telas pequenas. */
+  main.page .hero .covers.has-center-focus .card.is-active .card__favorite { min-height: 42px; } /* Mantém uma área de toque confortável para favoritar. */
+} /* Fecha os ajustes de nitidez para celulares. */
