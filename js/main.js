@@ -7,7 +7,7 @@ const games = [
   { id: "pes", title: "PES 6", category: "esporte",
     cover: "assets/cover-pes.png", alt: "Capa de Pro Evolution Soccer 6", url: "https://pes6.optijuegos.net/" },
   { id: "gta", title: "GTA 5", category: "acao",
-    cover: "assets/cover-gta.png", alt: "Capa de Grand Theft Auto V", url: "https://wasmarcade.com/gta-5" },
+    cover: "assets/cover-gta.png", alt: "Capa de Grand Theft Auto V", url: "https://fiveplay.lol/" },
   { id: "cs", title: "CS 1.6 / Half-Life", category: "fps",
     cover: "assets/cover-cs-16.jpg", alt: "Capa de Counter-Strike 1.6", url: "https://x8bitrain.github.io/webXash/",
     note: "WebXash: use seus arquivos de Half-Life ou Counter-Strike." },

@@ -8,7 +8,7 @@ As verificações conferiram páginas, destinos dos links e imagens. Não compro
 | --- | --- | --- | --- |
 | DBZ TK 3 | acao | Aguardando link | Em breve |
 | PES 6 | esporte | [Projeto](https://pes6.optijuegos.net/) | Página do projeto encontrada |
-| GTA 5 | acao | [Projeto](https://wasmarcade.com/gta-5) | Página do projeto encontrada |
+| GTA 5 | acao | [Projeto](https://fiveplay.lol/) | Endereço direto informado pelo colaborador |
 | CS 1.6 / Half-Life | fps | [Projeto](https://x8bitrain.github.io/webXash/) | WebXash: use seus arquivos de Half-Life ou Counter-Strike. |
 | Black Ops 2 | fps | [Projeto](https://vibeslops.luckeysystems.com/) | Indisponível: O projeto está fora do ar. |
 | Fifa Street | esporte | [Projeto](https://fifastreet2.fun/) | Página do projeto encontrada |
@@ -38,7 +38,7 @@ As verificações conferiram páginas, destinos dos links e imagens. Não compro
 
 - Vice City: o endereço completo foi confirmado no [README do projeto](https://github.com/joncodeofficial/gta-vice-city-wasm).
 - Black Ops Zombies: a rota antiga `/bo1z` não está disponível; a página atual está em [vel.gg/bsz](https://vel.gg/bsz). Os links de Moon e Kino usam as rotas publicadas pelo seletor de mapas desse projeto. As antigas páginas `moon-zombies.pages.dev` e `kino-der-toten.pages.dev` redirecionam para outro domínio.
-- GTA 5: como o endereço do Web Archive veio incompleto, o card usa a [página de GTA 5 no WASM Arcade](https://wasmarcade.com/gta-5), portal incluído na lista enviada.
+- GTA 5: o card usa o endereço direto [fiveplay.lol](https://fiveplay.lol/), informado pelo colaborador para substituir o link incompleto do Web Archive.
 - O endereço `ut.pieter.com` identifica o jogo como [Urban Terror](https://ut.pieter.com/), por isso o card usa esse nome.
 - A entrada Half-Life / CS 1.6 foi associada ao card existente de Counter-Strike para manter os favoritos e evitar duplicação. O port de Half-Life da Pixelsuft tem um card próprio.
 
