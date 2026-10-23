@@ -1,13 +1,75 @@
-// Catálogo usado para montar os cards da página.
-const games = [ // Cria a lista de jogos; cada objeto abaixo reúne os dados de um card.
-  // Para criar um card, copie um objeto e altere estes dados.
-  { id: "dbz", title: "DBZ TK 3", category: "acao", cover: "assets/cover-dbz.png", alt: "Capa de Dragon Ball Z Budokai Tenkaichi 3", url: "" }, // Cadastra DBZ TK 3 (ID dbz): title é o nome, category é o filtro, cover é a imagem, alt descreve a capa e url é o endereço para jogar, ainda vazio.
-  { id: "pes", title: "PES 6", category: "esporte", cover: "assets/cover-pes.png", alt: "Capa de PES 6 Pro Evolution Soccer", url: "https://pes6.optijuegos.net/" }, // Cadastra PES 6 (ID pes): title é o nome, category é o filtro, cover é a imagem, alt descreve a capa e url é o endereço para jogar.
-  { id: "gta", title: "GTA 5", category: "acao", cover: "assets/cover-gta.png", alt: "Capa de Grand Theft Auto V", url: "" }, // Cadastra GTA 5 (ID gta): title é o nome, category é o filtro, cover é a imagem, alt descreve a capa e url é o endereço para jogar, ainda vazio.
-  { id: "cs", title: "CS", category: "fps", cover: "assets/cover-cs.png", alt: "Capa de Counter-Strike", url: "" }, // Cadastra CS (ID cs): title é o nome, category é o filtro, cover é a imagem, alt descreve a capa e url é o endereço para jogar, ainda vazio.
-  { id: "bo2", title: "BLACK OPS 2", category: "fps", cover: "assets/cover-bo2.png", alt: "Capa de Call of Duty Black Ops II", url: "" }, // Cadastra BLACK OPS 2 (ID bo2): title é o nome, category é o filtro, cover é a imagem, alt descreve a capa e url é o endereço para jogar, ainda vazio.
-  { id: "street", title: "Fifa Street", category: "esporte", cover: "assets/cover-fifa-street.png", alt: "Capa do fifa street", url:"https://fifastreet2.fun/"} // Cadastra Fifa Street (ID street): title é o nome, category é o filtro, cover é a imagem, alt descreve a capa e url é o endereço para jogar.
-]; // Encerra a lista de jogos.
+// Catálogo dos jogos. Os IDs existentes são preservados para manter os favoritos salvos.
+// cover e alt identificam a imagem; url abre o projeto; note informa requisitos para jogar.
+// unavailable guarda o motivo de um link estar desativado, sem remover o jogo do catálogo.
+const games = [
+  { id: "dbz", title: "DBZ TK 3", category: "acao",
+    cover: "assets/cover-dbz.png", alt: "Capa de Dragon Ball Z Budokai Tenkaichi 3", url: "" },
+  { id: "pes", title: "PES 6", category: "esporte",
+    cover: "assets/cover-pes.png", alt: "Capa de Pro Evolution Soccer 6", url: "https://pes6.optijuegos.net/" },
+  { id: "gta", title: "GTA 5", category: "acao",
+    cover: "assets/cover-gta.png", alt: "Capa de Grand Theft Auto V", url: "https://wasmarcade.com/gta-5" },
+  { id: "cs", title: "CS 1.6 / Half-Life", category: "fps",
+    cover: "assets/cover-cs-16.jpg", alt: "Capa de Counter-Strike 1.6", url: "https://x8bitrain.github.io/webXash/",
+    note: "WebXash: use seus arquivos de Half-Life ou Counter-Strike." },
+  { id: "bo2", title: "Black Ops 2", category: "fps",
+    cover: "assets/cover-bo2.png", alt: "Capa de Call of Duty: Black Ops II", url: "https://vibeslops.luckeysystems.com/",
+    unavailable: "O projeto está fora do ar." },
+  { id: "street", title: "Fifa Street", category: "esporte",
+    cover: "assets/cover-fifa-street.png", alt: "Capa de Fifa Street", url: "https://fifastreet2.fun/" },
+  { id: "moon", title: "Moon Zombies", category: "fps",
+    cover: "assets/cover-moon.webp", alt: "Arte do mapa Moon de Black Ops Zombies", coverFit: "contain", url: "https://vel.gg/bsz/moon" },
+  { id: "vice-city", title: "GTA Vice City", category: "acao",
+    cover: "assets/cover-gta-vice-city.png", alt: "Capa de Grand Theft Auto: Vice City", url: "https://joncodeofficial.github.io/gta-vice-city-wasm/",
+    note: "Requer seus arquivos de GTA Vice City." },
+  { id: "quake-3", title: "Quake III Arena", category: "fps",
+    cover: "assets/cover-quake-3.jpg", alt: "Capa de Quake III Arena", url: "https://q3.pieter.com/" },
+  { id: "bo1-zombies", title: "Black Ops Zombies", category: "fps",
+    cover: "assets/cover-bo1.jpg", alt: "Arte de Call of Duty: Black Ops", url: "https://vel.gg/bsz" },
+  { id: "half-life", title: "Half-Life", category: "fps",
+    cover: "assets/cover-half-life.jpg", alt: "Capa de Half-Life", url: "https://pixelsuft.github.io/hl/",
+    note: "Requer seus arquivos de Half-Life." },
+  { id: "skate-3", title: "Skate 3 — Fan Game", category: "esporte",
+    cover: "assets/cover-skate-3.jpg", alt: "Capa de Skate 3, referência do fan game", url: "https://skate.aaddpp.lol/",
+    note: "Fan game: requer uma cópia própria convertida de Skate 3." },
+  { id: "halo-ce", title: "Halo CE", category: "fps",
+    cover: "assets/cover-halo-ce.jpg", alt: "Capa de Halo: Combat Evolved", url: "https://mitchellhynes.com/halo",
+    note: "Combat Lab: requer sua imagem de disco de Halo CE." },
+  { id: "diablo", title: "Diablo", category: "rpg",
+    cover: "assets/cover-diablo.png", alt: "Capa do primeiro Diablo", url: "https://johnimril.github.io/diablo_web/",
+    note: "Demo disponível. O jogo completo requer seu DIABDAT.MPQ." },
+  { id: "mw2", title: "Modern Warfare 2", category: "fps",
+    cover: "assets/cover-mw2.jpg", alt: "Arte de Call of Duty: Modern Warfare 2", url: "https://ovz-game-production.up.railway.app/",
+    unavailable: "O projeto Open Victor Zulu está fora do ar." },
+  { id: "kino", title: "Kino der Toten", category: "fps",
+    cover: "assets/cover-kino.webp", alt: "Arte do mapa Kino der Toten de Black Ops Zombies", coverFit: "contain", url: "https://vel.gg/bsz/kino" },
+  { id: "urban-terror", title: "Urban Terror", category: "fps",
+    cover: "assets/cover-urban-terror.jpg", alt: "Arte de Urban Terror no navegador", coverFit: "contain", url: "https://ut.pieter.com/" },
+  { id: "simpsons", title: "The Simpsons: Hit & Run", category: "acao",
+    cover: "assets/cover-simpsons.png", alt: "Capa de The Simpsons: Hit & Run", url: "https://shar-wasm.cjoseph.workers.dev/?skipmovie" },
+  { id: "quake-1", title: "Quake 1", category: "fps",
+    cover: "assets/cover-quake-1.jpg", alt: "Capa de Quake", url: "https://q1.pieter.com/" },
+  { id: "skate-rust", title: "Skate × Rust", category: "esporte",
+    cover: "assets/cover-mw2.jpg", alt: "Arte de Modern Warfare 2, referência do mapa Rust", url: "https://global-terror.net/",
+    unavailable: "O jogo não está disponível no site de origem." },
+  { id: "halo-ce-mobile", title: "Halo CE Mobile", category: "fps",
+    cover: "assets/cover-halo-ce.jpg", alt: "Capa de Halo: Combat Evolved, referência da versão mobile", url: "https://hcemobile.com/",
+    note: "Requer sua imagem de disco de Halo CE para Xbox." },
+  { id: "cheese-cube", title: "BO3 Cheese Cube", category: "fps",
+    cover: "assets/cover-bo3.jpg", alt: "Arte de Call of Duty: Black Ops III", url: "https://cheese-cube.pages.dev/",
+    unavailable: "O jogo não está mais disponível neste endereço." },
+  { id: "wolfenstein", title: "Return to Castle Wolfenstein", category: "fps",
+    cover: "assets/cover-wolfenstein.jpg", alt: "Capa de Return to Castle Wolfenstein", url: "https://rtcw.pieter.com/" },
+  { id: "cs-surf", title: "CS Surf — Surfd", category: "fps",
+    cover: "assets/cover-surf.png", alt: "Arte de Surfd com rampas de surf", coverFit: "contain", url: "https://surfd.net/" },
+  { id: "quake-2", title: "Quake II", category: "fps",
+    cover: "assets/cover-quake-2.jpg", alt: "Capa de Quake II", url: "https://q2.pieter.com/" },
+  { id: "hedgewars", title: "Hedgewars", category: "estrategia",
+    cover: "assets/cover-hedgewars.png", alt: "Captura de tela do jogo Hedgewars", coverFit: "contain", url: "https://webwars.link/",
+    unavailable: "O endereço de WebWars está temporariamente indisponível." },
+  { id: "wasm-arcade", title: "WASM Arcade", category: "arcade",
+    cover: "assets/cover-wasm-arcade.png", alt: "Arte do portal WASM Arcade", coverFit: "contain", url: "https://wasmarcade.com/",
+    note: "Coleção com GTA, Minecraft e outros jogos de navegador.", playLabel: "Explorar jogos" },
+];
 
 const $ = (selector) => document.querySelector(selector); // Cria o atalho $ para buscar o primeiro elemento HTML que corresponde a um seletor.
 const $$ = (selector) => document.querySelectorAll(selector); // Cria o atalho $$ para buscar todos os elementos HTML que correspondem a um seletor.
@@ -69,6 +131,8 @@ function render() { // Recria os cards preservando o jogo selecionado e seu alin
 
   gamesToRender.forEach((game) => { // Executa o bloco seguinte uma vez para cada jogo da lista que será exibida.
     const card = document.createElement("article"); // Cria um elemento article na memória para representar um card.
+    const playable = Boolean(game.url) && !game.unavailable; // Desativa links retirados do ar ou ainda não cadastrados.
+    const gameNote = game.unavailable || game.note || (game.url ? "" : "O link deste jogo será adicionado em breve.");
 
     card.className = "card"; // Define a classe card para aplicar os estilos do cartão.
     card.dataset.id = game.id; // Grava o ID do jogo no atributo data-id do card.
@@ -78,8 +142,8 @@ function render() { // Recria os cards preservando o jogo selecionado e seu alin
     card.innerHTML = `
       <div class="card__inner"> <!-- Agrupa a frente e o verso que giram juntos. -->
         <div class="card__front" aria-hidden="false"> <!-- Mantém a capa e os controles originais na frente. -->
-          <figure class="card__art"> <!-- Abre a área que contém a imagem da capa do jogo. -->
-            <img src="${game.cover}" alt="${game.alt}" /> <!-- Insere a capa e sua descrição alternativa usando os dados do jogo. -->
+          <figure class="card__art${game.coverFit === "contain" ? " card__art--contain" : ""}"> <!-- Preserva também artes horizontais sem cortar seus títulos. -->
+            <img src="${game.cover}" alt="${game.alt}" loading="lazy" decoding="async" /> <!-- Carrega as capas conforme elas se aproximam da área visível. -->
           </figure> <!-- Fecha a área da capa. -->
           <h2 class="card__title">${game.title}</h2> <!-- Exibe o título do jogo em um cabeçalho h2. -->
           <div class="card__actions"> <!-- Agrupa o selo e o botão de favoritos do card. -->
@@ -92,7 +156,8 @@ function render() { // Recria os cards preservando o jogo selecionado e seu alin
         <div class="card__back" aria-hidden="true" inert> <!-- Cria o verso inicialmente escondido e fora da navegação por teclado. -->
           <img class="card__back-logo" src="assets/logo-footer.png" alt="KKB Hub" /> <!-- Usa a marca existente como detalhe do verso. -->
           <h3 class="card__back-title">${game.title}</h3> <!-- Identifica o jogo que acabou de virar. -->
-          <button class="card__play" type="button">Jogar</button> <!-- Preserva a abertura do jogo em uma ação explícita. -->
+          ${gameNote ? `<p class="card__note">${gameNote}</p>` : ""} <!-- Explica os requisitos ou a indisponibilidade do jogo. -->
+          <button class="card__play" type="button"${playable ? "" : " disabled"}>${playable ? game.playLabel || "Jogar" : game.unavailable ? "Indisponível" : "Em breve"}</button> <!-- Abre somente endereços disponíveis. -->
           <small class="card__back-hint">Clique novamente para voltar</small> <!-- Orienta como revelar a capa de novo. -->
         </div> <!-- Fecha o verso do card. -->
       </div> <!-- Fecha o suporte da rotação. -->
@@ -152,9 +217,9 @@ function toggleFavorite(gameId) { // Declara a função que alterna o estado de 
 function openGame(game) { // Declara a função que abre o endereço cadastrado para um jogo.
   selectedId = game.id; // Atualiza o identificador selecionado com o ID do jogo clicado.
 
-  if (!game.url) { // Verifica se o jogo ainda está sem um endereço cadastrado.
+  if (!game.url || game.unavailable) { // Evita abrir links ausentes ou que já não oferecem o jogo.
     elements.status.hidden = false; // Torna visível a área de mensagens acima dos cards.
-    elements.status.textContent = `Adicione o link do jogo "${game.title}" no campo url.`; // Exibe uma mensagem com o título do jogo, informando que falta preencher seu endereço.
+    elements.status.textContent = game.unavailable || `O link de ${game.title} será adicionado em breve.`;
     render(); // Atualiza a lista de cards na tela usando o estado atual da página.
     return; // Encerra esta execução da função imediatamente.
   } // Encerra o bloco de código aberto anteriormente.

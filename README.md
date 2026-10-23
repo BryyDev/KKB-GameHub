@@ -6,6 +6,12 @@ NKDFENFDNSJKHERWJKD
 
 Este projeto é um hub de jogos feito com HTML, CSS e JavaScript puro. Os cards são gerados automaticamente a partir de uma lista de jogos no arquivo `js/main.js`.
 
+## Catálogo atualizado
+
+O hub reúne 27 cards, com capas locais e filtros para Ação, Esporte, FPS, Corrida, RPG, Estratégia e Arcade. Os detalhes dos endereços e das verificações estão no [catálogo de jogos](docs/CATALOGO.md), e as fontes das novas imagens estão em [créditos das capas](assets/CREDITS.md).
+
+Os requisitos de cada projeto aparecem no verso do card. Jogos com links indisponíveis mantêm sua capa e exibem o botão **Indisponível**; jogos que ainda não têm endereço exibem **Em breve**.
+
 ## Acesse o site
 
 Você pode acessar o KKB Hub diretamente pelo GitHub Pages:

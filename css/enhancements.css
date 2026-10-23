@@ -435,6 +435,30 @@ main.page .hero .covers.has-center-focus .card.is-active .card__back-logo { widt
 main.page .hero .covers.has-center-focus .card.is-active .card__back-title { font-size: 23px; } /* Desenha o título do verso diretamente no tamanho final. */
 main.page .hero .covers.has-center-focus .card.is-active .card__play { max-width: 194px; min-height: 46px; font-size: 13px; } /* Preserva o destaque do botão Jogar sem escalar seu texto. */
 main.page .hero .covers.has-center-focus .card.is-active .card__back-hint { font-size: 11px; } /* Mantém a orientação de retorno legível no verso. */
+
+/* Catálogo ampliado: preserva artes horizontais, títulos longos e o estado dos links. */
+main.page .hero .covers .card .card__art--contain img {
+  object-fit: contain;
+}
+main.page .hero .covers .card .card__title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+main.page .hero .covers.has-center-focus .card .card__note {
+  margin: 0;
+  max-width: 230px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+main.page .hero .covers.has-center-focus .card .card__play:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
 @media (max-width: 700px) { /* Ajusta o crescimento à altura menor dos cards no celular. */
   main.page .hero .covers.has-center-focus .card.is-active .card__inner { inset-block: -19px; } /* Preserva o crescimento proporcional em telas pequenas. */
   main.page .hero .covers.has-center-focus .card.is-active .card__favorite { min-height: 42px; } /* Mantém uma área de toque confortável para favoritar. */
